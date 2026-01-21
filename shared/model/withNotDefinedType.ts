@@ -1,0 +1,1 @@
+export type WithNotDefinedType<T> = T | null | undefined;
