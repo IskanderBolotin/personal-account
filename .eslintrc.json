@@ -11,7 +11,7 @@
   "rules": {
     // Помогает избегать создания нестабильных вложенных компонентов
     "react/no-unstable-nested-components": "warn",
-     // Разрешает JSX только в .tsx файлах
+    // Разрешает JSX только в .tsx файлах
     "react/jsx-filename-extension": [
       2,
       {
