@@ -1,4 +1,4 @@
-@use "@/styles/fonts.scss" as *;
+@use "@/app/styles/fonts.scss" as *;
 
 :root {
   --black: #3b434e;
@@ -9,6 +9,7 @@
   --red: #fc836d;
   --green: #1dc37e;
   --green-light: #c8f8e4;
+  --color-background: #f5f6f8;
   --font-family: "NotoSans", sans-serif;
 }
 

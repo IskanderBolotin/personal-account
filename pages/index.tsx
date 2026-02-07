@@ -1,5 +1,5 @@
+import { CustomButton, Title } from "@/src/shared/ui";
 import Head from "next/head";
-import { CustomButton, TitleTag } from "@/components";
 
 export default function Home() {
   return (
@@ -10,13 +10,16 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <TitleTag as="h1">
-        Заголовок 2
-      </TitleTag>
+      <Title as="h1">Заголовок 2</Title>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, debitis. Quisquam distinctio iste fugiat, ea magni recusandae repellat ullam odio omnis vel asperiores porro impedit beatae exercitationem. Culpa, ut quis!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, debitis. Quisquam
+        distinctio iste fugiat, ea magni recusandae repellat ullam odio omnis vel asperiores porro
+        impedit beatae exercitationem. Culpa, ut quis!
       </p>
-      <CustomButton appearance="primary" arrow="down"> Test </CustomButton>
+      <CustomButton appearance="primary" arrow="down">
+        Test
+      </CustomButton>
     </>
   );
 }
+
