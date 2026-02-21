@@ -1,0 +1,49 @@
+.wrapper {
+  padding: 0 2.5px;
+  display: flex;
+  justify-content: flex-start;
+}
+.raiting {
+  display: flex;
+  margin: 0 -2.5px;
+  .label {
+    color: var(--primary);
+  }
+  &:not(.notEditable) {
+    &:hover {
+      .label {
+        color: var(--primary-hover);
+        &:hover {
+          & ~ .label {
+            color: var(--disabled);
+          }
+        }
+      }
+    }
+  }
+  &.notEditable:hover,
+  &:not(:hover) {
+    .input {
+      &:checked {
+        & + .label {
+          color: var(--primary);
+          & ~ .label {
+            color: var(--disabled);
+          }
+        }
+      }
+    }
+  }
+}
+
+.label {
+  cursor: pointer;
+  display: flex;
+  padding: 0 2.5px;
+  color: var(--disabled);
+  svg {
+    fill: currentColor;
+    width: 20px;
+    height: 20px;
+  }
+}

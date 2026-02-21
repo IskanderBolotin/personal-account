@@ -1,4 +1,4 @@
-import { CustomButton, Title } from "@/src/shared/ui";
+import { CustomButton, Raiting, Tag, Title } from "@/src/shared/ui";
 import Head from "next/head";
 
 export default function Home() {
@@ -19,6 +19,13 @@ export default function Home() {
       <CustomButton appearance="primary" arrow="down">
         Test
       </CustomButton>
+      <div>
+        <Tag>Test</Tag>
+        <Tag type="red">Test</Tag>
+        <Tag type="green">Test</Tag>
+        <Tag type="primary">Test</Tag>
+      </div>
+      <Raiting defaultValue={"2"} />
     </>
   );
 }

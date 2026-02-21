@@ -1,0 +1,49 @@
+.tag {
+  border-radius: 20px;
+  display: inline-block;
+  text-align: center;
+  font-size: 0;
+  .inner {
+    display: inline-block;
+  }
+  &.primary {
+    border: 1px solid var(--primary);
+    .inner {
+      padding: 3px 7px;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: var(--primary);
+    }
+  }
+  &.common {
+    background-color: var(--gray-dark);
+    .inner {
+      padding: 5px 10px;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 14px;
+      color: var(--white);
+    }
+  }
+  &.green {
+    background-color: var(--green-light);
+    .inner {
+      padding: 5px 8px;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 12px;
+      color: var(--green);
+    }
+  }
+  &.red {
+    background-color: var(--red-dark);
+    .inner {
+      padding: 5px 10px;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 14px;
+      color: var(--white);
+    }
+  }
+}
