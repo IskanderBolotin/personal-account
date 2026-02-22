@@ -1,13 +1,13 @@
 import cn from "classnames";
 import s from "./title.module.scss";
+import { ComponentProps } from "react";
 
 type OwnProps<E extends React.ElementType = React.ElementType> = {
   as?: E;
   level?: 1 | 2 | 3;
 };
 
-type Props<E extends React.ElementType> = OwnProps<E> &
-  Omit<React.ComponentProps<E>, keyof OwnProps>;
+type Props<E extends React.ElementType> = OwnProps<E> & Omit<ComponentProps<E>, keyof OwnProps>;
 
 const defaultElementTag = "h1";
 

@@ -1,0 +1,24 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  :global(.container) {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+}
+.content {
+  flex-grow: 1;
+  display: flex;
+  margin: 0 -15px;
+  padding-bottom: 50px;
+  padding-top: 30px;
+}
+.sidebar {
+  width: 260px;
+  padding: 0 15px;
+}
+.main {
+  width: calc(100% - 260px);
+  padding: 0 15px;
+}

@@ -1,0 +1,1 @@
+export { MainPageWithLayout } from "./mainPage";

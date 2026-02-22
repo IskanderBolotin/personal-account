@@ -1,5 +1,5 @@
-import { ChangeEvent, useState } from "react";
-import { isDefinedFn, isDefinedString } from "../../libs";
+import { ChangeEvent, ComponentProps, useState } from "react";
+import { isDefinedFn } from "../../libs";
 import s from "./textInput.module.scss";
 import cn from "classnames";
 
@@ -9,7 +9,7 @@ type OwnProps = {
 };
 
 export type TextInputProps = OwnProps &
-  Omit<React.ComponentProps<"input">, keyof OwnProps | "defaultValue">;
+  Omit<ComponentProps<"input">, keyof OwnProps | "defaultValue">;
 
 const TextInput: React.FC<TextInputProps> = ({
   value = "",

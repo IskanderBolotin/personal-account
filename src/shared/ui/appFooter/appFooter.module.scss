@@ -1,0 +1,20 @@
+.footer {
+  padding: 25px 0;
+  color: var(--white);
+  background-color: var(--primary);
+}
+.text {
+  font-size: 16px;
+  line-height: 22px;
+}
+.list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 -20px;
+  padding: 0;
+}
+.item {
+  padding: 0 20px;
+}

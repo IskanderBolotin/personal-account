@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, ComponentProps, useState } from "react";
 import s from "./textArea.module.scss";
 import { isDefinedFn } from "../../libs";
 import cn from "classnames";
@@ -8,7 +8,7 @@ type OwnProps = {
   onChange?: (value?: string) => void;
 };
 
-type Props = OwnProps & Omit<React.ComponentProps<"textarea">, keyof OwnProps>;
+type Props = OwnProps & Omit<ComponentProps<"textarea">, keyof OwnProps>;
 
 const TextArea: React.FC<Props> = ({ value, onChange, className, ...otherProps }) => {
   const [inputValue, setInputValue] = useState(value);
