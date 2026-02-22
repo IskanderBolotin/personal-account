@@ -1,1 +1,1 @@
-export type TagType = "primary" | "common" | "green" | "red";
+export type TagType = "default" | "primary" | "common" | "green" | "red";

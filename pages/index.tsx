@@ -1,4 +1,14 @@
-import { CustomButton, Raiting, Tag, Title } from "@/src/shared/ui";
+import {
+  CustomButton,
+  IconButton,
+  Paragraph,
+  Raiting,
+  SearchInput,
+  Tag,
+  TextArea,
+  TextInput,
+  Title,
+} from "@/src/shared/ui";
 import Head from "next/head";
 
 export default function Home() {
@@ -10,22 +20,49 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Title as="h1">Заголовок 2</Title>
-      <p>
+      <Title as="h1" level={1}>
+        Заголовок 1
+      </Title>
+      <Title as="h1" level={2}>
+        Заголовок 2
+      </Title>
+      <Title as="h1" level={3} style={{ fontWeight: 600 }}>
+        Заголовок 3 - толщина 600
+      </Title>
+      <Title as="h1" level={3} style={{ fontWeight: 700 }}>
+        Заголовок 3 - толщина 700
+      </Title>
+      <Paragraph size="l">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, debitis. Quisquam
         distinctio iste fugiat, ea magni recusandae repellat ullam odio omnis vel asperiores porro
         impedit beatae exercitationem. Culpa, ut quis!
-      </p>
-      <CustomButton appearance="primary" arrow="down">
-        Test
+      </Paragraph>
+      <Paragraph size="m">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, debitis. Quisquam
+        distinctio iste fugiat, ea magni recusandae repellat ullam odio omnis vel asperiores porro
+        impedit beatae exercitationem. Culpa, ut quis!
+      </Paragraph>
+      <Paragraph size="s">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, debitis. Quisquam
+        distinctio iste fugiat, ea magni recusandae repellat ullam odio omnis vel asperiores porro
+        impedit beatae exercitationem. Culpa, ut quis!
+      </Paragraph>
+      <CustomButton appearance="primary">Узнать подробнее</CustomButton>
+      <CustomButton appearance="ghost" arrow="right">
+        Читать отзывы
       </CustomButton>
       <div>
         <Tag>Test</Tag>
+        <Tag type="common">Test</Tag>
         <Tag type="red">Test</Tag>
         <Tag type="green">Test</Tag>
         <Tag type="primary">Test</Tag>
       </div>
       <Raiting defaultValue={"2"} />
+      <TextInput placeholder="Имя" />
+      <TextInput placeholder="Имя" value="Test" />
+      <SearchInput />
+      <TextArea placeholder="Текст отзыва" />
     </>
   );
 }

@@ -5,6 +5,7 @@
   --black: #3b434e;
   --white: #ffffff;
   --gray-light: #ebebeb;
+  --gray: #a4a4a4;
   --gray-dark: #b3c0d9;
   --primary: #7653fc;
   --primary-hover: #6344df;
@@ -57,7 +58,8 @@ article {
 }
 
 input,
-button {
+button,
+textarea {
   font-family: var(--font-family);
   font-weight: 500;
   -webkit-box-shadow: none;

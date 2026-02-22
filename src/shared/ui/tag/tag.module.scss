@@ -6,6 +6,16 @@
   .inner {
     display: inline-block;
   }
+  &.default {
+    border: 1px solid var(--gray-light);
+    .inner {
+      padding: 4px 11px;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 12px;
+      color: var(--black);
+    }
+  }
   &.primary {
     border: 1px solid var(--primary);
     .inner {

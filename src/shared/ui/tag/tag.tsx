@@ -6,7 +6,7 @@ import { TagType } from "./tagType";
 type Props = { type?: TagType } & HtmlElementPropsType<HTMLDivElement>;
 
 const Tag: React.FC<React.PropsWithChildren<Props>> = ({
-  type = "common",
+  type = "default",
   children,
   ...otherProps
 }) => {

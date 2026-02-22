@@ -3,3 +3,7 @@ export { CustomButton } from "./customButton";
 export { Paragraph } from "./paragraph";
 export { Raiting } from "./raiting";
 export { Tag } from "./tag";
+export { TextInput } from "./textInput";
+export { TextArea } from "./textArea";
+export { IconButton } from "./iconButton";
+export { SearchInput } from "./searchInput";

@@ -1,11 +1,6 @@
-.wrapper {
-  padding: 0 2.5px;
-  display: flex;
-  justify-content: flex-start;
-}
 .raiting {
-  display: flex;
-  margin: 0 -2.5px;
+  display: inline-flex;
+  font-size: 0;
   .label {
     color: var(--primary);
   }
@@ -39,11 +34,11 @@
 .label {
   cursor: pointer;
   display: flex;
-  padding: 0 2.5px;
   color: var(--disabled);
   svg {
     fill: currentColor;
     width: 20px;
     height: 20px;
+    margin-right: 5px;
   }
 }

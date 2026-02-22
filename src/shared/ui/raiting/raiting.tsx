@@ -60,32 +60,30 @@ const Raiting: React.FC<Props> = ({
   };
 
   return (
-    <div className={s.wrapper}>
-      <div {...divProps} className={cn(s.raiting, isNotEditable && s.notEditable)}>
-        {starValues.map((star) => {
-          const { label, id } = star;
-          return (
-            <Fragment key={id}>
-              <input
-                type="radio"
-                id={id}
-                name="raiting"
-                className={cn(s.input, "visually-hidden")}
-                tabIndex={-1}
-                {...setInputChandeHandler(id)}
-              />
-              <label
-                aria-label={label}
-                className={cn(s.label, id === "0" && "visually-hidden")}
-                htmlFor={id}
-                tabIndex={id === "0" ? -1 : 0}
-              >
-                <Star />
-              </label>
-            </Fragment>
-          );
-        })}
-      </div>
+    <div {...divProps} className={cn(s.raiting, isNotEditable && s.notEditable)}>
+      {starValues.map((star) => {
+        const { label, id } = star;
+        return (
+          <Fragment key={id}>
+            <input
+              type="radio"
+              id={id}
+              name="raiting"
+              className={cn(s.input, "visually-hidden")}
+              tabIndex={-1}
+              {...setInputChandeHandler(id)}
+            />
+            <label
+              aria-label={label}
+              className={cn(s.label, id === "0" && "visually-hidden")}
+              htmlFor={id}
+              tabIndex={id === "0" ? -1 : 0}
+            >
+              <Star />
+            </label>
+          </Fragment>
+        );
+      })}
     </div>
   );
 };
