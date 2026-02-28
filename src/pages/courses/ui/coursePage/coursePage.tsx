@@ -1,4 +1,4 @@
-import { withMainLayout } from "@/src/shared/layouts/mainLayout";
+import { withMainLayout } from "@/src/widget/layouts/ui";
 import { CourseProps } from "../../model";
 
 const CoursePage: React.FC<CourseProps> = ({ menu, page, category, products }) => {

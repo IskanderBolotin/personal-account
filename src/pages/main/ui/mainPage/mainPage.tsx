@@ -1,4 +1,3 @@
-import { withMainLayout } from "@/src/shared/layouts/mainLayout";
 import {
   CustomButton,
   Paragraph,
@@ -11,6 +10,7 @@ import {
 } from "@/src/shared/ui";
 import Head from "next/head";
 import { MainProps } from "../../model";
+import { withMainLayout } from "@/src/widget/layouts/ui";
 
 const MainPage: React.FC<MainProps> = ({ menu, category }) => {
   return (
@@ -21,7 +21,7 @@ const MainPage: React.FC<MainProps> = ({ menu, category }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Title as="h1" level={1}>
+      <Title as="h1" level={1} onClick={() => console.log(menu)}>
         Заголовок 1
       </Title>
       <Title as="h1" level={2}>

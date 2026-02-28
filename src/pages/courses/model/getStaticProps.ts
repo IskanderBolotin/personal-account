@@ -3,6 +3,7 @@ import { topPageService } from "@/src/entity/topPage/api";
 import { CourseProps } from "./courseProps";
 import { isDefined } from "@/src/shared/libs";
 import { productService } from "@/src/entity/product/api";
+import { LevelCategoryEnum } from "@/src/shared/model";
 
 export const getCourseStaticProps: GetStaticProps<CourseProps> = async ({
   params,
@@ -13,7 +14,7 @@ export const getCourseStaticProps: GetStaticProps<CourseProps> = async ({
     };
   }
 
-  const category = 0;
+  const category = LevelCategoryEnum.Courses;
   const { alias } = params;
 
   try {

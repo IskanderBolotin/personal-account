@@ -1,8 +1,9 @@
 import { topPageService } from "@/src/entity/topPage/api";
+import { LevelCategoryEnum } from "@/src/shared/model";
 import { GetStaticPaths } from "next";
 
 export const getCourseStaticPaths: GetStaticPaths = async () => {
-  const category = 0;
+  const category = LevelCategoryEnum.Courses;
 
   try {
     const { data: menu } = await topPageService.postNavigation({ category });

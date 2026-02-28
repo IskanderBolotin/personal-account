@@ -1,4 +1,4 @@
-export const enum LevelCategory {
+export const enum LevelCategoryEnum {
   Courses,
   Services,
   Books,

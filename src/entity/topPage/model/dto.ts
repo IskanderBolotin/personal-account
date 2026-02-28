@@ -1,7 +1,7 @@
-import { LevelCategory } from "@/src/shared/model";
+import { LevelCategoryEnum } from "@/src/shared/model";
 
 export type SecondCategoryType = {
-  secondCayegory: string;
+  secondCategory: string;
 };
 
 export type PageItemType = {
@@ -42,7 +42,7 @@ export type PageDto = {
   tagsTitle: string;
   metaTitle: string;
   metaDescription: string;
-  firstCategory: LevelCategory;
+  firstCategory: LevelCategoryEnum;
   advantages: AdvantageType[];
   createdAt: Date;
   updatedAt: Date;

@@ -1,6 +1,3 @@
-import { NavigationDto } from "@/src/entity/topPage/model";
+import { DefaultPageProps } from "@/src/widget/layouts/model";
 
-export type MainProps = {
-  menu: NavigationDto[];
-  category: number;
-};
+export type MainProps = DefaultPageProps;
