@@ -10,8 +10,9 @@ import {
   Title,
 } from "@/src/shared/ui";
 import Head from "next/head";
+import { MainProps } from "../../model";
 
-const MainPage: React.FC = () => {
+const MainPage: React.FC<MainProps> = ({ menu, category }) => {
   return (
     <>
       <Head>
