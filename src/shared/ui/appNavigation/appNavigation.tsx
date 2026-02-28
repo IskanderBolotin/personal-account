@@ -5,6 +5,7 @@ import CoursIcon from "./images/course.svg";
 import ServiceIcon from "./images/service.svg";
 import BookIcon from "./images/book.svg";
 import ProductIcon from "./images/product.svg";
+import { CollapsableContent } from "../collapsableContent";
 
 type NavType = {
   id: number;
@@ -99,36 +100,59 @@ const AppNavigation: React.FC = () => {
     <nav className={s.nav}>
       <ul className={s.menu}>
         {navData.map((mainItem) => {
-          const { key, title, children } = mainItem;
+          const { key, title, children, link, isOpen } = mainItem;
           return (
             <li className={s.menuItem} key={key}>
-              <div className={cn(s.mainTitle, s.title)}>
-                <span className={s.icon}>{iconConfig[key]}</span>
-                {title}
-              </div>
-              {isDefinedArray(children) && (
-                <ul className={s.subMenu}>
-                  {children.map((subMenuItem) => {
-                    const { key, title, link, children } = subMenuItem;
-                    return (
-                      <li className={s.subMenuItem} key={key}>
-                        <div className={cn(s.subTitle, s.title)}>{title}</div>
-                        {isDefinedArray(children) && (
-                          <ul className={s.category}>
-                            {children.map((categoryItem) => {
-                              const { key, title, link } = categoryItem;
-                              return (
-                                <li className={s.categoryItem} key={key}>
-                                  <div className={cn(s.categoryTitle, s.title)}>{title}</div>
-                                </li>
-                              );
-                            })}
-                          </ul>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
+              {isDefinedArray(children) ? (
+                <CollapsableContent
+                  triggerElement={
+                    <div className={cn(s.mainTitle, s.title)}>
+                      <span className={s.icon}>{iconConfig[key]}</span>
+                      {title}
+                    </div>
+                  }
+                  content={
+                    <ul className={s.subMenu}>
+                      {children.map((subMenuItem) => {
+                        const { key, title, link, children, isOpen } = subMenuItem;
+                        return (
+                          <li className={s.subMenuItem} key={key}>
+                            {isDefinedArray(children) ? (
+                              <CollapsableContent
+                                triggerElement={
+                                  <div className={cn(s.subTitle, s.title)}>{title}</div>
+                                }
+                                content={
+                                  <ul className={s.category}>
+                                    {children.map((categoryItem) => {
+                                      const { key, title, link, isOpen } = categoryItem;
+                                      return (
+                                        <li className={s.categoryItem} key={key}>
+                                          <div className={cn(s.categoryTitle, s.title)}>
+                                            {title}
+                                          </div>
+                                        </li>
+                                      );
+                                    })}
+                                  </ul>
+                                }
+                                isOpen={isOpen}
+                              />
+                            ) : (
+                              <div className={cn(s.subTitle, s.title)}>{title}</div>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  }
+                  isOpen={isOpen}
+                />
+              ) : (
+                <div className={cn(s.mainTitle, s.title)}>
+                  <span className={s.icon}>{iconConfig[key]}</span>
+                  {title}
+                </div>
               )}
             </li>
           );

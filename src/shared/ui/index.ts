@@ -9,3 +9,4 @@ export { IconButton } from "./iconButton";
 export { SearchInput } from "./searchInput";
 export { AppFooter } from "./appFooter";
 export { AppNavigation } from "./appNavigation";
+export { CollapsableContent } from "./collapsableContent";
