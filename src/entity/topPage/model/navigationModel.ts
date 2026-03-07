@@ -6,4 +6,5 @@ export type NavigationModel = {
   title: string;
   icon: ReactNode;
   key: string;
+  isOpen?: boolean;
 };

@@ -10,3 +10,5 @@ export { SearchInput } from "./searchInput";
 export { AppFooter } from "./appFooter";
 export { CollapsableContent } from "./collapsableContent";
 export { MainLogo } from "./mainLogo";
+export { CategoryTitle } from "./categoryTitle";
+export { SortButton } from "./sortButton";

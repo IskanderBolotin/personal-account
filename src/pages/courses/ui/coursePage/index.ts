@@ -1,1 +1,0 @@
-export { CoursePageWithLayout } from "./coursePage";

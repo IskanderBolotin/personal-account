@@ -8,10 +8,11 @@ type Props = { type?: TagType } & HtmlElementPropsType<HTMLDivElement>;
 const Tag: React.FC<React.PropsWithChildren<Props>> = ({
   type = "default",
   children,
+  className,
   ...otherProps
 }) => {
   return (
-    <span {...otherProps} className={cn(s.tag, s[type])}>
+    <span {...otherProps} className={cn(s.tag, s[type], className)}>
       <span className={s.inner}>{children}</span>
     </span>
   );

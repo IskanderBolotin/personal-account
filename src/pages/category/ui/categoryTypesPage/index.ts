@@ -1,0 +1,1 @@
+export { CategoryTypesPageWithLayout } from "./categoryTypesPage";

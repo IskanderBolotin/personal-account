@@ -1,0 +1,1 @@
+export { CategoryAliasPageWithLayout } from "./categoryAliasPage";

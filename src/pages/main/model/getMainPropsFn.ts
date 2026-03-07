@@ -3,7 +3,7 @@ import { topPageService } from "@/src/entity/topPage/api";
 import { MainProps } from "./mainProps";
 import { LevelCategoryEnum } from "@/src/shared/model";
 
-export const getMainStaticProps: GetStaticProps<MainProps> = async () => {
+export const getStaticProps: GetStaticProps<MainProps> = async () => {
   const category = LevelCategoryEnum.Courses;
   try {
     const res = await topPageService.postNavigation({ category });
