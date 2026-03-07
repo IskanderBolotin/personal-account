@@ -11,9 +11,10 @@ import { useRouter } from "next/router";
 type Props = {
   menu: NavigationDto[];
   category: LevelCategoryEnum;
+  navClassName?: string;
 };
 
-const AppNavigation: React.FC<Props> = ({ menu, category }) => {
+const AppNavigation: React.FC<Props> = ({ menu, category, navClassName }) => {
   const { query } = useRouter();
 
   const currentAliasPath = isDefined(query.alias)
@@ -23,7 +24,7 @@ const AppNavigation: React.FC<Props> = ({ menu, category }) => {
     : "";
 
   return (
-    <nav className={s.nav}>
+    <nav className={cn(s.nav, navClassName)}>
       <ul className={s.menu}>
         {mainNavigationConfig?.map((mainItem) => {
           const { id, title, icon, key } = mainItem;

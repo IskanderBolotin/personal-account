@@ -1,24 +1,17 @@
 import { WithNotDefinedType } from "../model";
 
-export const isDefined = <T extends any>(
-  v: WithNotDefinedType<T>
-): v is NonNullable<T> => v !== null && v !== undefined;
+export const isDefined = <T extends any>(v: WithNotDefinedType<T>): v is NonNullable<T> =>
+  v !== null && v !== undefined;
 
-export const isDefinedString = <T extends unknown>(
-  v: WithNotDefinedType<T>
-): v is T => {
+export const isDefinedString = (v: unknown): v is string => {
   return isDefined(v) && typeof v === "string" && v.trim().length !== 0;
 };
 
-export const isDefinedNumber = <T extends unknown>(
-  v: WithNotDefinedType<T>
-): v is T => {
+export const isDefinedNumber = (v: unknown): v is number => {
   return isDefined(v) && !Number.isNaN(v) && Number.isFinite(v);
 };
 
-export const isDefinedObject = <T extends unknown>(
-  v: WithNotDefinedType<T>
-): v is T => {
+export const isDefinedObject = <T extends unknown>(v: WithNotDefinedType<T>): v is T => {
   return isDefined(v) && typeof v === "object";
 };
 

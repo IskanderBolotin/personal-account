@@ -17,6 +17,8 @@
 .sidebar {
   width: 260px;
   padding: 0 15px;
+  display: flex;
+  flex-direction: column;
 }
 .main {
   width: calc(100% - 260px);

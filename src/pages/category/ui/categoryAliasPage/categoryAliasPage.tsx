@@ -3,6 +3,7 @@ import { CategoryAliasProps } from "../../model";
 import s from "./categoryAliasPage.module.scss";
 import { CategoryTitle, SortButton } from "@/src/shared/ui";
 import { Vacancy } from "@/src/widget/categories/ui";
+import { isDefined } from "@/src/shared/libs";
 
 const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ menu, page, category, products }) => {
   return (
@@ -11,7 +12,7 @@ const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ menu, page, category,
         <CategoryTitle title={page.title} tagTitle={products?.length} />
         <SortButton title="По рейтингу " />
       </div>
-      <Vacancy title={page.category} {...page.hh} />
+      {isDefined(page.hh) && <Vacancy title={page.category} {...page.hh} />}
     </>
   );
 };
