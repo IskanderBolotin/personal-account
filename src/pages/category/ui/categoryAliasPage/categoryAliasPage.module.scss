@@ -1,5 +1,9 @@
-.title {
+.topTitle {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 20px;
+}
+.section {
+  margin-bottom: 45px;
 }

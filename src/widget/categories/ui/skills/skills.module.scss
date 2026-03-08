@@ -1,0 +1,16 @@
+.title {
+  margin-bottom: 20px;
+  @media (max-width: 1400px) {
+    margin-bottom: 15px;
+  }
+}
+.list {
+  list-style: none;
+  margin: -5px -5px 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.item {
+  padding: 5px 5px 0;
+}

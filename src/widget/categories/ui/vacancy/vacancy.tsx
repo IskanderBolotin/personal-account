@@ -7,11 +7,19 @@ import { displayPrice, isDefinedNumber } from "@/src/shared/libs";
 
 type Props = {
   title: string;
+  wrapperClassName?: string;
 } & Partial<HHDataType>;
 
-const Vacancy: React.FC<Props> = ({ title, count, juniorSalary, middleSalary, seniorSalary }) => {
+const Vacancy: React.FC<Props> = ({
+  title,
+  wrapperClassName,
+  count,
+  juniorSalary,
+  middleSalary,
+  seniorSalary,
+}) => {
   return (
-    <section>
+    <section className={wrapperClassName}>
       <div className={s.title}>
         <CategoryTitle
           title={`Вакансии - ${title}`}

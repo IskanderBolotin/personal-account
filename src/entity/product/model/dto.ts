@@ -20,7 +20,7 @@ export type ProductDto = {
   updatedAt: Date;
   __v: number;
   image: string;
-  initailRaiting: number;
+  initialRaiting: number;
   revies: ReviewDto[];
   reviewCount: number;
   reviewAvg?: number;

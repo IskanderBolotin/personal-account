@@ -26,7 +26,11 @@ const CategoryTitle: React.FC<Props> = ({
           {title}
         </Title>
       </div>
-      <div className={s.item}>{isDefined(tagTitle) && <Tag type={tagType}>{tagTitle}</Tag>}</div>
+      {isDefined(tagTitle) && (
+        <div className={s.item}>
+          <Tag type={tagType}>{tagTitle}</Tag>
+        </div>
+      )}
     </div>
   );
 };

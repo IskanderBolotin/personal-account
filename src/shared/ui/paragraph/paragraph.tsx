@@ -7,9 +7,14 @@ type Props = {
   size?: "s" | "m" | "l";
 } & HtmlElementPropsType<HTMLParagraphElement>;
 
-const Paragraph: React.FC<PropsWithChildren<Props>> = ({ size = "m", children, ...otherProps }) => {
+const Paragraph: React.FC<PropsWithChildren<Props>> = ({
+  size = "m",
+  children,
+  className,
+  ...otherProps
+}) => {
   return (
-    <p className={cn(s.paragraph, s[`size-${size}`])} {...otherProps}>
+    <p className={cn(s.paragraph, s[`size-${size}`], className)} {...otherProps}>
       {children}
     </p>
   );
