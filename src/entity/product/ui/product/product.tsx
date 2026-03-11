@@ -6,6 +6,7 @@ import {
   displayPrice,
   isDefined,
   isDefinedArray,
+  isDefinedFn,
   isDefinedNumber,
   isDefinedString,
 } from "@/src/shared/libs";
@@ -14,9 +15,10 @@ import Image from "next/image";
 
 type Props = {
   data: ProductDto;
+  readReviewHanlder?: () => void;
 };
 
-const Product: React.FC<Props> = ({ data }) => {
+const Product: React.FC<Props> = ({ data, readReviewHanlder }) => {
   const {
     title,
     image,
@@ -32,6 +34,12 @@ const Product: React.FC<Props> = ({ data }) => {
     characteristics,
     tags,
   } = data;
+
+  const onReadReview = () => {
+    if (isDefinedFn(readReviewHanlder)) {
+      readReviewHanlder();
+    }
+  };
 
   return (
     <Card>
@@ -146,7 +154,7 @@ const Product: React.FC<Props> = ({ data }) => {
             <CustomButton appearance="primary">Узнать подробнее</CustomButton>
           </div>
           <div className={s.btn}>
-            <CustomButton appearance="ghost" arrow="right">
+            <CustomButton appearance="ghost" arrow="right" onClick={onReadReview}>
               Читать отзывы
             </CustomButton>
           </div>

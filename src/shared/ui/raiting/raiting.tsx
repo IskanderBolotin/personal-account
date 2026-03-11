@@ -16,12 +16,14 @@ const starValues = [
 ] as const;
 
 type Props = {
+  name?: string;
   defaultValue?: RaitnigValuesType;
   isNotEditable?: boolean;
   onChangeHandler?: (checkedId: RaitnigValuesType) => void;
 } & HtmlElementPropsType<HTMLDivElement>;
 
 const Raiting: React.FC<Props> = ({
+  name,
   defaultValue = 0,
   isNotEditable = false,
   onChangeHandler,
@@ -67,8 +69,8 @@ const Raiting: React.FC<Props> = ({
           <Fragment key={id}>
             <input
               type="radio"
-              id={`${id}`}
-              name="raiting"
+              id={`${name}-${id}`}
+              name={name}
               className={cn(s.input, "visually-hidden")}
               tabIndex={-1}
               {...setInputChandeHandler(id)}
@@ -76,8 +78,8 @@ const Raiting: React.FC<Props> = ({
             <label
               aria-label={label}
               className={cn(s.label, id === 0 && "visually-hidden")}
-              htmlFor={`${id}`}
-              tabIndex={id === 0 ? -1 : 0}
+              htmlFor={`${name}-${id}`}
+              tabIndex={isNotEditable ? -1 : id === 0 ? -1 : 0}
             >
               <Star />
             </label>

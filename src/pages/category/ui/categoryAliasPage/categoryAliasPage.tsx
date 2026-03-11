@@ -59,11 +59,13 @@ const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ page, products }) => 
           />
         </div>
       </div>
-      {sortedProducts.map((product) => (
-        <div style={{ marginBottom: "10px" }} key={product._id}>
-          <ProductWithReview product={product} />
-        </div>
-      ))}
+      <section className={s.section}>
+        {sortedProducts.map((product) => (
+          <div style={{ marginBottom: "10px" }} key={product._id}>
+            <ProductWithReview product={product} />
+          </div>
+        ))}
+      </section>
       {isDefined(page.hh) && (
         <Vacancy title={page.category} {...page.hh} wrapperClassName={s.section} />
       )}

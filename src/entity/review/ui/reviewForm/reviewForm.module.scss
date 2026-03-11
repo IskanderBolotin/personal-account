@@ -1,0 +1,44 @@
+.wrapper {
+  &:not(:first-child) {
+    margin-top: 30px;
+  }
+  overflow: hidden;
+}
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -20px -15px 0;
+}
+.item {
+  padding: 20px 15px 0;
+  &.fullWidth {
+    width: 100%;
+  }
+  &.itemRaiting {
+    margin-left: auto;
+    align-self: center;
+  }
+}
+.raiting {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: -10px -10px 0;
+}
+.raitngItem {
+  display: flex;
+  font-size: 14px;
+  line-height: 19px;
+  padding: 10px 10px 0;
+}
+.text {
+  display: inline;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 24px;
+}
+.button {
+  width: 148px;
+  text-align: center;
+  margin-right: 10px;
+}
