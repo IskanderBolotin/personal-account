@@ -1,4 +1,5 @@
 import { ReviewDto } from "@/src/entity/review/@x/product";
+import { RaitnigValuesType } from "@/src/shared/ui/raiting";
 
 export type ProductCharacteristic = {
   value: string;
@@ -20,9 +21,10 @@ export type ProductDto = {
   updatedAt: Date;
   __v: number;
   image: string;
-  initialRaiting: number;
+  initialRaiting: RaitnigValuesType;
   revies: ReviewDto[];
   reviewCount: number;
-  reviewAvg?: number;
+  reviewAvg?: RaitnigValuesType;
   advantages: string;
+  disadvantages: string;
 };

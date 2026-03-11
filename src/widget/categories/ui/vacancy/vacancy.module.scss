@@ -86,7 +86,7 @@
       background-color: var(--gray-light);
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     width: 100%;
     &:not(:last-child) {
       padding-bottom: 15px;

@@ -1,0 +1,1 @@
+export { SearchPageWithLayout } from "./searchPage";

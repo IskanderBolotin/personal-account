@@ -59,7 +59,7 @@ const MainPage: React.FC<MainProps> = ({ menu, category }) => {
         <Tag type="green">Test</Tag>
         <Tag type="primary">Test</Tag>
       </div>
-      <Raiting defaultValue={"2"} />
+      <Raiting defaultValue={2} />
       <TextInput placeholder="Имя" />
       <TextInput placeholder="Имя" value="Test" />
       <SearchInput />

@@ -1,4 +1,5 @@
 @use "@/app/styles/fonts.scss" as *;
+@use "@/app/styles/variables.scss" as *;
 
 :root {
   --default: #787d85;
@@ -18,6 +19,7 @@
   --font-family: "NotoSans", sans-serif;
   --vacancy-star: #bbbbbb;
   --media-laptop: 1400px;
+  --media-tablet: 1024px;
 }
 
 * {
@@ -36,6 +38,10 @@ body {
   font-family: var(--font-family);
   color: var(--black);
   background-color: var(--color-background);
+  font-size: 16px;
+  @media (max-width: $media-laptop) {
+    font-size: 14px;
+  }
 }
 
 body,

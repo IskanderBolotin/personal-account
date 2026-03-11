@@ -1,7 +1,7 @@
 import cn from "classnames";
 import s from "./appNavigation.module.scss";
 import { CollapsableContent } from "@/src/shared/ui";
-import { isDefined, isDefinedArray, isDefinedString } from "@/src/shared/libs";
+import { isDefined, isDefinedArray } from "@/src/shared/libs";
 import { NavigationDto } from "../../model";
 import Link from "next/link";
 import { LevelCategoryEnum } from "@/src/shared/model";
@@ -9,8 +9,8 @@ import { mainNavigationConfig } from "../../config";
 import { useRouter } from "next/router";
 
 type Props = {
-  menu: NavigationDto[];
-  category: LevelCategoryEnum;
+  menu?: NavigationDto[];
+  category?: LevelCategoryEnum;
   navClassName?: string;
 };
 

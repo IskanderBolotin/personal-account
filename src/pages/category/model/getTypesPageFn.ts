@@ -2,7 +2,7 @@ import { topPageService } from "@/src/entity/topPage/api";
 import { mainNavigationConfig } from "@/src/entity/topPage/config";
 import { GetStaticPaths } from "next";
 import { GetStaticProps, GetStaticPropsContext } from "next";
-import { isDefined, isDefinedArray } from "@/src/shared/libs";
+import { isDefined } from "@/src/shared/libs";
 import { CategoryTypesProps } from "./categoryTypesProps";
 
 export const getStaticPaths: GetStaticPaths = async () => {

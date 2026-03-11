@@ -1,6 +1,8 @@
 import { SortButton } from "@/src/shared/ui";
 import s from "./productSort.module.scss";
 
+type Props = {};
+
 const ProductSort: React.FC = () => {
   return (
     <div className={s.sort}>

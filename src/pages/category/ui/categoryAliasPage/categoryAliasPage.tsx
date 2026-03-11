@@ -4,7 +4,7 @@ import s from "./categoryAliasPage.module.scss";
 import { CategoryTitle } from "@/src/shared/ui";
 import { Advantages, Skills, Vacancy } from "@/src/widget/categories/ui";
 import { isDefined, isDefinedArray } from "@/src/shared/libs";
-import { ProductSort } from "@/src/entity/product/ui";
+import { Product, ProductSort } from "@/src/entity/product/ui";
 import { useReducer } from "react";
 import { sortReducer } from "@/src/entity/product/model";
 
@@ -17,8 +17,10 @@ const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ menu, page, category,
         <CategoryTitle title={page.title} tagTitle={products?.length} />
         <ProductSort />
       </div>
-      {products.map((item) => (
-        <div>{item.title}</div>
+      {products.map((product) => (
+        <div style={{ marginBottom: "10px" }} key={product._id}>
+          <Product data={product} />{" "}
+        </div>
       ))}
       {isDefined(page.hh) && (
         <Vacancy title={page.category} {...page.hh} wrapperClassName={s.section} />

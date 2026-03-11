@@ -3,21 +3,30 @@ import { isDefinedString } from "@/shared/libs";
 import ArrowIcon from "./images/arrow.svg";
 import s from "./customButton.module.scss";
 import { HtmlElementPropsType } from "../../model";
+import { ComponentProps, ElementType, PropsWithChildren } from "react";
 
-type Props = {
+type OwnProps<E extends ElementType = ElementType> = {
   appearance?: "primary" | "ghost";
   arrow?: "right" | "down";
+  as?: E;
 } & HtmlElementPropsType<HTMLButtonElement>;
 
-const CustomButton: React.FC<React.PropsWithChildren<Props>> = ({
+type Props<E extends ElementType> = OwnProps<E> & Omit<ComponentProps<E>, keyof OwnProps>;
+
+const defaultElementTag = "button";
+
+const CustomButton = <E extends React.ElementType = typeof defaultElementTag>({
   appearance = "primary",
   arrow,
   children,
+  as,
   className,
   ...otherButtonProps
-}) => {
+}: PropsWithChildren<Props<E>>) => {
+  const TagName = as || defaultElementTag;
+
   return (
-    <button className={cn(s.button, s[appearance], className)} {...otherButtonProps}>
+    <TagName className={cn(s.button, s[appearance], className)} {...otherButtonProps}>
       <span className={s.inner}>
         {children}
         {isDefinedString(arrow) && (
@@ -26,7 +35,7 @@ const CustomButton: React.FC<React.PropsWithChildren<Props>> = ({
           </span>
         )}
       </span>
-    </button>
+    </TagName>
   );
 };
 

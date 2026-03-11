@@ -7,12 +7,12 @@ import { isDefinedFn } from "../../libs";
 import { HtmlElementPropsType } from "../../model";
 
 const starValues = [
-  { label: "", id: "0" },
-  { label: "Ужасно", id: "1" },
-  { label: "Плохо", id: "2" },
-  { label: "Нормально", id: "3" },
-  { label: "Хорошо", id: "4" },
-  { label: "Отлично", id: "5" },
+  { label: "", id: 0 },
+  { label: "Ужасно", id: 1 },
+  { label: "Плохо", id: 2 },
+  { label: "Нормально", id: 3 },
+  { label: "Хорошо", id: 4 },
+  { label: "Отлично", id: 5 },
 ] as const;
 
 type Props = {
@@ -22,12 +22,12 @@ type Props = {
 } & HtmlElementPropsType<HTMLDivElement>;
 
 const Raiting: React.FC<Props> = ({
-  defaultValue = "0",
+  defaultValue = 0,
   isNotEditable = false,
   onChangeHandler,
   ...divProps
 }) => {
-  const [checkedId, setCheckedId] = useState(defaultValue);
+  const [checkedId, setCheckedId] = useState<number>(defaultValue);
 
   const inputHandler = (currentId: RaitnigValuesType) => {
     setCheckedId(currentId);
@@ -67,7 +67,7 @@ const Raiting: React.FC<Props> = ({
           <Fragment key={id}>
             <input
               type="radio"
-              id={id}
+              id={`${id}`}
               name="raiting"
               className={cn(s.input, "visually-hidden")}
               tabIndex={-1}
@@ -75,9 +75,9 @@ const Raiting: React.FC<Props> = ({
             />
             <label
               aria-label={label}
-              className={cn(s.label, id === "0" && "visually-hidden")}
-              htmlFor={id}
-              tabIndex={id === "0" ? -1 : 0}
+              className={cn(s.label, id === 0 && "visually-hidden")}
+              htmlFor={`${id}`}
+              tabIndex={id === 0 ? -1 : 0}
             >
               <Star />
             </label>

@@ -1,3 +1,5 @@
+@use "@/app/styles/variables.scss" as *;
+
 .title {
   margin: 0;
   font-weight: 500;
@@ -6,12 +8,24 @@
 .level-1 {
   font-size: 26px;
   line-height: 35px;
+  @media (max-width: $media-laptop) {
+    font-size: 22px;
+    line-height: 30px;
+  }
 }
 .level-2 {
   font-size: 22px;
   line-height: 30px;
+  @media (max-width: $media-laptop) {
+    font-size: 20px;
+    line-height: 27px;
+  }
 }
 .level-3 {
   font-size: 20px;
   line-height: 27px;
+  @media (max-width: $media-laptop) {
+    font-size: 18px;
+    line-height: 24px;
+  }
 }
