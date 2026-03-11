@@ -16,7 +16,7 @@
   &:hover {
     color: var(--primary-hover);
     .icon {
-      opacity: 0.5;
+      opacity: 0.8;
     }
     &.active {
       .icon {
@@ -47,7 +47,7 @@
   align-items: center;
 }
 .icon {
-  opacity: 0;
+  opacity: 0.5;
   width: 20px;
   height: 13px;
   flex-shrink: 0;

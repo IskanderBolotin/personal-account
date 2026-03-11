@@ -1,11 +1,5 @@
 @use "@/app/styles/variables.scss" as *;
 
-.wrapper {
-  padding: 30px 30px 20px;
-  background-color: var(--white);
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
-  border-radius: 5px;
-}
 .header {
   display: flex;
   align-items: center;

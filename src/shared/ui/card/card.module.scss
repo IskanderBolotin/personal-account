@@ -1,0 +1,13 @@
+@use "@/app/styles/variables.scss" as *;
+
+.wrapper {
+  padding: 30px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  &.white {
+    background-color: var(--white);
+  }
+  &.gray {
+    background-color: #f9f8ff;
+  }
+}

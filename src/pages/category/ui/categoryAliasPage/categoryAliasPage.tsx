@@ -2,15 +2,15 @@ import { withMainLayout } from "@/src/widget/layouts/ui";
 import { CategoryAliasProps } from "../../model";
 import s from "./categoryAliasPage.module.scss";
 import { CategoryTitle } from "@/src/shared/ui";
-import { Advantages, Skills, Vacancy } from "@/src/widget/categories/ui";
+import { Advantages, ProductWithReview, Skills, Vacancy } from "@/src/widget/categories/ui";
 import { isDefined, isDefinedArray } from "@/src/shared/libs";
-import { Product, ProductSort } from "@/src/entity/product/ui";
+import { ProductSort } from "@/src/entity/product/ui";
 import { useLayoutEffect, useReducer } from "react";
 import { SortEnum, sortReducer } from "@/src/entity/product/model";
 import { SortType } from "@/src/shared/ui/sortButton/sortType";
 
 const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ page, products }) => {
-  const [{ products: sortedProducts, sort }, dispatch] = useReducer(sortReducer, { products });
+  const [{ products: sortedProducts }, dispatch] = useReducer(sortReducer, { products });
 
   useLayoutEffect(() => {
     dispatch({ type: "RESET", payload: products });
@@ -61,7 +61,7 @@ const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ page, products }) => 
       </div>
       {sortedProducts.map((product) => (
         <div style={{ marginBottom: "10px" }} key={product._id}>
-          <Product data={product} />{" "}
+          <ProductWithReview product={product} />
         </div>
       ))}
       {isDefined(page.hh) && (

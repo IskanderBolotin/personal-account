@@ -1,4 +1,4 @@
-import { CustomButton, Paragraph, Raiting, Tag, Title } from "@/src/shared/ui";
+import { Card, CustomButton, Paragraph, Raiting, Tag, Title } from "@/src/shared/ui";
 import { ProductDto } from "../../model";
 import s from "./product.module.scss";
 import {
@@ -34,7 +34,7 @@ const Product: React.FC<Props> = ({ data }) => {
   } = data;
 
   return (
-    <div className={s.wrapper}>
+    <Card>
       <div className={s.header}>
         <div className={s.headerItem}>
           <div className={s.left}>
@@ -152,7 +152,7 @@ const Product: React.FC<Props> = ({ data }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 

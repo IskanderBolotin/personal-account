@@ -22,7 +22,7 @@ export type ProductDto = {
   __v: number;
   image: string;
   initialRaiting: RaitnigValuesType;
-  revies: ReviewDto[];
+  reviews: ReviewDto[];
   reviewCount: number;
   reviewAvg?: RaitnigValuesType;
   advantages: string;
