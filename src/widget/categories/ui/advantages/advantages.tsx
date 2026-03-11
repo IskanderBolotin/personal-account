@@ -3,6 +3,7 @@ import s from "./advantages.module.scss";
 import { AdvantageType } from "@/src/entity/topPage/model";
 import CheckIcon from "./images/check.svg";
 import { isDefinedString } from "@/src/shared/libs";
+import { useLayoutEffect, useState } from "react";
 
 type Props = {
   data: AdvantageType[];
@@ -11,6 +12,14 @@ type Props = {
 };
 
 const Advantages: React.FC<Props> = ({ data, seoText, wrapperClassName }) => {
+  const [safeHTML, setSafeHTML] = useState("");
+
+  useLayoutEffect(() => {
+    if (isDefinedString(seoText) && safeHTML !== seoText) {
+      setSafeHTML(seoText);
+    }
+  }, [seoText]);
+
   return (
     <section className={wrapperClassName}>
       <div className={s.title}>
@@ -36,7 +45,7 @@ const Advantages: React.FC<Props> = ({ data, seoText, wrapperClassName }) => {
       </ul>
       {isDefinedString(seoText) && (
         <Paragraph size="l" className={s.seoText}>
-          <span dangerouslySetInnerHTML={{ __html: seoText }}></span>
+          <span dangerouslySetInnerHTML={{ __html: safeHTML }} suppressHydrationWarning></span>
         </Paragraph>
       )}
     </section>

@@ -1,3 +1,5 @@
+@use "@/app/styles/variables.scss" as *;
+
 .sort {
   cursor: pointer;
   display: block;
@@ -10,11 +12,23 @@
   line-height: 22px;
   color: var(--black);
   transition: 0.25s color;
+  white-space: nowrap;
   &:hover {
     color: var(--primary-hover);
+    .icon {
+      opacity: 0.5;
+    }
+    &.active {
+      .icon {
+        opacity: 1;
+      }
+    }
   }
   &.active {
     color: var(--primary);
+    .icon {
+      opacity: 1;
+    }
   }
   &.desc {
     .icon {
@@ -23,16 +37,22 @@
       }
     }
   }
+  @media (max-width: $media-laptop) {
+    font-size: 14px;
+    line-height: 18px;
+  }
 }
 .inner {
   display: flex;
   align-items: center;
 }
 .icon {
+  opacity: 0;
   width: 20px;
-  min-width: 20px;
-  margin-right: 8px;
   height: 13px;
+  flex-shrink: 0;
+  margin-right: 8px;
+  transition: 0.25s opacity;
   svg {
     display: block;
     width: 100%;
@@ -40,5 +60,9 @@
     margin-right: 8px;
     fill: currentColor;
     transform: scale(1, -1);
+  }
+  @media (max-width: $media-laptop) {
+    width: 15px;
+    margin-right: 5px;
   }
 }

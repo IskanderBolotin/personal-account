@@ -1,3 +1,5 @@
+@use "@/app/styles/variables.scss" as *;
+
 .wrapper {
   padding: 30px 30px 20px;
   background-color: var(--white);
@@ -6,12 +8,21 @@
 }
 .header {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--gray-light);
   padding-bottom: 18px;
+  margin-top: -10px;
   margin-bottom: 22px;
+  @media (max-width: $media-tablet-large) {
+    flex-wrap: wrap;
+  }
+}
+.headerItem {
+  padding: 10px 0 0;
+  @media (max-width: $media-tablet-large) {
+    width: 100%;
+  }
 }
 .footer {
   border-top: 1px solid var(--gray-light);
@@ -101,15 +112,16 @@
 .info {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -30px;
+  margin: -15px -30px 0;
 }
-.infoLeft {
+.infoItem {
   width: 50%;
-  padding: 0 30px;
+  padding: 15px 30px 0;
+  @media (max-width: $media-laptop) {
+    width: 100%;
+  }
 }
 .infoRight {
-  width: 50%;
-  padding: 0 30px;
   .property {
     margin-bottom: 5px;
   }

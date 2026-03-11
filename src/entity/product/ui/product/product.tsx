@@ -36,64 +36,60 @@ const Product: React.FC<Props> = ({ data }) => {
   return (
     <div className={s.wrapper}>
       <div className={s.header}>
-        <div className={s.left}>
-          <div className={s.image}>
-            <Image
-              src={`${image}`}
-              alt={title}
-              width={70}
-              height={70}
-              quality={100}
-              objectFit="cover"
-              objectPosition="center"
-            />
-          </div>
-          <div>
-            <div className={s.title}>
-              <Title as="h3" level={3} className={s.mainTitle}>
-                {title}
-              </Title>
+        <div className={s.headerItem}>
+          <div className={s.left}>
+            <div className={s.image}>
+              <Image src={`${image}`} alt={title} width={70} height={70} quality={100} />
             </div>
-            {isDefinedArray(categories) && (
-              <div className={s.categories}>
-                {categories.map((category) => (
-                  <div className={s.category} key={category}>
-                    <Tag type="default">{category}</Tag>
-                  </div>
-                ))}
+            <div>
+              <div className={s.title}>
+                <Title as="h3" level={3} className={s.mainTitle}>
+                  {title}
+                </Title>
               </div>
-            )}
+              {isDefinedArray(categories) && (
+                <div className={s.categories}>
+                  {categories.map((category) => (
+                    <div className={s.category} key={category}>
+                      <Tag type="default">{category}</Tag>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
-        <div className={s.right}>
-          <div className={s.rightItem}>
-            <div className={s.rightMain}>
-              <div>
-                <span className={s.price}>{displayPrice({ value: price })}</span>{" "}
-                {isDefined(oldPrice) && (
-                  <Tag type="green" className={s.oldPrice}>
-                    -{displayPrice({ value: price - oldPrice })}
-                  </Tag>
-                )}
+        <div className={s.headerItem}>
+          <div className={s.right}>
+            <div className={s.rightItem}>
+              <div className={s.rightMain}>
+                <div>
+                  <span className={s.price}>{displayPrice({ value: price })}</span>{" "}
+                  {isDefined(oldPrice) && (
+                    <Tag type="green" className={s.oldPrice}>
+                      -{displayPrice({ value: price - oldPrice })}
+                    </Tag>
+                  )}
+                </div>
               </div>
+              <div className={s.rightSub}>цена</div>
             </div>
-            <div className={s.rightSub}>цена</div>
-          </div>
-          <div className={s.rightItem}>
-            <div className={s.rightMain}>
-              <span className={s.price}>
-                {displayPrice({ value: credit })}
-                <span className={s.sub}>/мес</span>
-              </span>
+            <div className={s.rightItem}>
+              <div className={s.rightMain}>
+                <span className={s.price}>
+                  {displayPrice({ value: credit })}
+                  <span className={s.sub}>/мес</span>
+                </span>
+              </div>
+              <div className={s.rightSub}>в кредит</div>
             </div>
-            <div className={s.rightSub}>в кредит</div>
-          </div>
-          <div className={s.rightItem}>
-            <div className={s.rightMain}>
-              <Raiting defaultValue={isDefinedNumber(reviewAvg) ? reviewAvg : 0} isNotEditable />
-            </div>
-            <div className={s.rightSub}>
-              {declineWordAfterNumber(reviewCount, ["отзыв", "отзыва", "отзывов"])}
+            <div className={s.rightItem}>
+              <div className={s.rightMain}>
+                <Raiting defaultValue={isDefinedNumber(reviewAvg) ? reviewAvg : 0} isNotEditable />
+              </div>
+              <div className={s.rightSub}>
+                {declineWordAfterNumber(reviewCount, ["отзыв", "отзыва", "отзывов"])}
+              </div>
             </div>
           </div>
         </div>
@@ -105,7 +101,7 @@ const Product: React.FC<Props> = ({ data }) => {
           </Paragraph>
         )}
         <div className={s.info}>
-          <div className={s.infoLeft}>
+          <div className={cn(s.infoItem, s.infoLeft)}>
             {isDefinedArray(characteristics) && (
               <ul className={s.characteristics}>
                 {characteristics.map((item, index) => {
@@ -130,7 +126,7 @@ const Product: React.FC<Props> = ({ data }) => {
               </div>
             )}
           </div>
-          <div className={s.infoRight}>
+          <div className={cn(s.infoItem, s.infoRight)}>
             {isDefinedString(advantages) && (
               <div className={s.advantages}>
                 <span className={s.property}>Преимущества</span>

@@ -5,19 +5,61 @@ import { CategoryTitle } from "@/src/shared/ui";
 import { Advantages, Skills, Vacancy } from "@/src/widget/categories/ui";
 import { isDefined, isDefinedArray } from "@/src/shared/libs";
 import { Product, ProductSort } from "@/src/entity/product/ui";
-import { useReducer } from "react";
-import { sortReducer } from "@/src/entity/product/model";
+import { useLayoutEffect, useReducer } from "react";
+import { SortEnum, sortReducer } from "@/src/entity/product/model";
+import { SortType } from "@/src/shared/ui/sortButton/sortType";
 
-const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ menu, page, category, products }) => {
+const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ page, products }) => {
   const [{ products: sortedProducts, sort }, dispatch] = useReducer(sortReducer, { products });
+
+  useLayoutEffect(() => {
+    dispatch({ type: "RESET", payload: products });
+  }, [products]);
+
+  const onClickRaitingSort = (sort: SortType | undefined) => {
+    if (sort === "asc") {
+      dispatch({ type: SortEnum.RAITING_ASC });
+      return;
+    }
+
+    if (sort === "desc") {
+      dispatch({ type: SortEnum.RAITING_DESC });
+      return;
+    }
+
+    dispatch({ type: "RESET", payload: products });
+    return;
+  };
+
+  const onClickPriceSort = (sort: SortType | undefined) => {
+    if (sort === "asc") {
+      dispatch({ type: SortEnum.PRICE_ASC });
+      return;
+    }
+
+    if (sort === "desc") {
+      dispatch({ type: SortEnum.PRICE_DESC });
+      return;
+    }
+
+    dispatch({ type: "RESET", payload: products });
+    return;
+  };
 
   return (
     <>
       <div className={s.topTitle}>
-        <CategoryTitle title={page.title} tagTitle={products?.length} />
-        <ProductSort />
+        <div className={s.topItem}>
+          <CategoryTitle title={page.title} tagTitle={products?.length} />
+        </div>
+        <div className={s.topItem}>
+          <ProductSort
+            onClickRaitingSort={onClickRaitingSort}
+            onClickPriceSort={onClickPriceSort}
+          />
+        </div>
       </div>
-      {products.map((product) => (
+      {sortedProducts.map((product) => (
         <div style={{ marginBottom: "10px" }} key={product._id}>
           <Product data={product} />{" "}
         </div>

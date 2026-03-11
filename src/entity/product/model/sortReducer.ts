@@ -1,7 +1,7 @@
 import { ProductDto } from "./dto";
 import { SortEnum } from "./sort";
 
-export type SortActions = { type?: SortEnum };
+export type SortActions = { type?: SortEnum } | { type?: "RESET"; payload: ProductDto[] };
 
 export type SortReducerState = {
   sort?: SortEnum;
@@ -10,28 +10,37 @@ export type SortReducerState = {
 
 export const sortReducer = (state: SortReducerState, action: SortActions): SortReducerState => {
   switch (action.type) {
-    case SortEnum.RaitingASC: {
+    case SortEnum.RAITING_ASC: {
       return {
-        sort: SortEnum.RaitingASC,
-        products: state.products.sort((a, b) => (a.initialRaiting > b.initialRaiting ? 1 : -1)),
+        sort: SortEnum.RAITING_ASC,
+        products: [...state.products].sort((a, b) =>
+          a.initialRaiting > b.initialRaiting ? 1 : -1,
+        ),
       };
     }
-    case SortEnum.RaitingDESC: {
+    case SortEnum.RAITING_DESC: {
       return {
-        sort: SortEnum.RaitingDESC,
-        products: state.products.sort((a, b) => (a.initialRaiting > b.initialRaiting ? -1 : 1)),
+        sort: SortEnum.RAITING_DESC,
+        products: [...state.products].sort((a, b) =>
+          a.initialRaiting > b.initialRaiting ? -1 : 1,
+        ),
       };
     }
-    case SortEnum.PriceASC: {
+    case SortEnum.PRICE_ASC: {
       return {
-        sort: SortEnum.PriceASC,
-        products: state.products.sort((a, b) => (a.price > b.price ? 1 : -1)),
+        sort: SortEnum.PRICE_ASC,
+        products: [...state.products].sort((a, b) => (a.price > b.price ? 1 : -1)),
       };
     }
-    case SortEnum.PriceDESC: {
+    case SortEnum.PRICE_DESC: {
       return {
-        sort: SortEnum.PriceDESC,
-        products: state.products.sort((a, b) => (a.price > b.price ? -1 : 1)),
+        sort: SortEnum.PRICE_DESC,
+        products: [...state.products].sort((a, b) => (a.price > b.price ? -1 : 1)),
+      };
+    }
+    case "RESET": {
+      return {
+        products: action.payload,
       };
     }
     default: {

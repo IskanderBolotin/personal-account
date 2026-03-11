@@ -1,6 +1,6 @@
 export const enum SortEnum {
-  RaitingASC = "raiting-asc",
-  RaitingDESC = "raiting-desc",
-  PriceASC = "price-asc",
-  PriceDESC = "price-desc",
+  RAITING_ASC = "RAITING_ASC",
+  RAITING_DESC = "RAITING_DESC",
+  PRICE_ASC = "PRICE_ASC",
+  PRICE_DESC = "PRICE_DESC",
 }

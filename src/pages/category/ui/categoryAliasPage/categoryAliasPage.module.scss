@@ -1,8 +1,15 @@
 .topTitle {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.topItem {
+  padding: 10px 10px 0;
 }
 .section {
   margin-bottom: 45px;
