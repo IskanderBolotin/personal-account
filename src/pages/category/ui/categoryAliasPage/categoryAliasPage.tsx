@@ -5,14 +5,14 @@ import { CategoryTitle } from "@/src/shared/ui";
 import { Advantages, ProductWithReview, Skills, Vacancy } from "@/src/widget/categories/ui";
 import { isDefined, isDefinedArray } from "@/src/shared/libs";
 import { ProductSort } from "@/src/entity/product/ui";
-import { useLayoutEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { SortEnum, sortReducer } from "@/src/entity/product/model";
 import { SortType } from "@/src/shared/ui/sortButton/sortType";
 
 const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ page, products }) => {
   const [{ products: sortedProducts }, dispatch] = useReducer(sortReducer, { products });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     dispatch({ type: "RESET", payload: products });
   }, [products]);
 
@@ -52,7 +52,7 @@ const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ page, products }) => 
         <div className={s.topItem}>
           <CategoryTitle title={page.title} tagTitle={products?.length} />
         </div>
-        <div className={s.topItem}>
+        <div className={s.topItem} key={`${page._id}-sort`}>
           <ProductSort
             onClickRaitingSort={onClickRaitingSort}
             onClickPriceSort={onClickPriceSort}

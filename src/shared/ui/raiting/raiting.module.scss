@@ -1,10 +1,20 @@
 .raiting {
+  position: relative;
+  --outline-color: var(--primary);
   display: inline-flex;
   font-size: 0;
+  &.error {
+    svg {
+      stroke: var(--red);
+    }
+  }
   .label {
     color: var(--primary);
   }
   &:not(.notEditable) {
+    .label {
+      cursor: pointer;
+    }
     &:hover {
       .label {
         color: var(--primary-hover);
@@ -32,7 +42,6 @@
 }
 
 .label {
-  cursor: pointer;
   display: flex;
   color: var(--disabled);
   &:last-child {
@@ -46,4 +55,19 @@
     height: 20px;
     margin-right: 5px;
   }
+  &:focus-visible {
+    outline: none;
+    &:not([tabindex="-1"]) {
+      svg {
+        outline: 1px solid var(--outline-color);
+      }
+    }
+  }
+}
+.errorMessage {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: flex;
 }

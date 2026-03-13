@@ -1,3 +1,8 @@
+.field {
+  display: block;
+  width: 100%;
+  position: relative;
+}
 .input {
   display: block;
   width: 100%;
@@ -21,4 +26,14 @@
   &:focus {
     outline: none;
   }
+  &.error {
+    border-color: var(--red);
+  }
+}
+.errorMessage {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: flex;
 }

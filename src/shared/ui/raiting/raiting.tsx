@@ -1,10 +1,13 @@
-import { Fragment, InputHTMLAttributes, useState } from "react";
+import { Fragment, InputHTMLAttributes, LabelHTMLAttributes, useEffect, useState } from "react";
 import cn from "classnames";
 import Star from "./images/star.svg";
 import s from "./raiting.module.scss";
 import { RaitnigValuesType } from "./raitnigTypes";
-import { isDefinedFn } from "../../libs";
+import { isDefinedFn, isDefinedString } from "../../libs";
 import { HtmlElementPropsType } from "../../model";
+import { RefCallBack } from "react-hook-form";
+import { ErrorMessage } from "../errorMessage";
+import { de } from "date-fns/locale";
 
 const starValues = [
   { label: "", id: 0 },
@@ -17,26 +20,38 @@ const starValues = [
 
 type Props = {
   name?: string;
+  uniqKey?: string;
+  error?: string;
   defaultValue?: RaitnigValuesType;
   isNotEditable?: boolean;
+  raitingRef?: RefCallBack;
   onChangeHandler?: (checkedId: RaitnigValuesType) => void;
 } & HtmlElementPropsType<HTMLDivElement>;
 
 const Raiting: React.FC<Props> = ({
   name,
+  uniqKey,
+  error,
   defaultValue = 0,
   isNotEditable = false,
+  raitingRef,
   onChangeHandler,
   ...divProps
 }) => {
   const [checkedId, setCheckedId] = useState<number>(defaultValue);
+  const isError = isDefinedString(error);
+
+  useEffect(() => {
+    if (defaultValue !== checkedId) {
+      setCheckedId(defaultValue);
+    }
+  }, [defaultValue]);
 
   const inputHandler = (currentId: RaitnigValuesType) => {
     setCheckedId(currentId);
     if (isDefinedFn(onChangeHandler)) {
       onChangeHandler(currentId);
     }
-    setCheckedId(currentId);
   };
 
   const setInputChandeHandler = (currentId: RaitnigValuesType) => {
@@ -61,32 +76,60 @@ const Raiting: React.FC<Props> = ({
     return props;
   };
 
+  const setLabelRef = (currentId: RaitnigValuesType) => {
+    let props: HtmlElementPropsType<HTMLLabelElement> = {};
+    if (checkedId === 0 && currentId === 1) {
+      props = {
+        ...props,
+        ref: raitingRef,
+      };
+    } else if (currentId === checkedId) {
+      props = {
+        ...props,
+        ref: raitingRef,
+      };
+    }
+
+    return props;
+  };
+
   return (
-    <div {...divProps} className={cn(s.raiting, isNotEditable && s.notEditable)}>
-      {starValues.map((star) => {
-        const { label, id } = star;
-        return (
-          <Fragment key={id}>
-            <input
-              type="radio"
-              id={`${name}-${id}`}
-              name={name}
-              className={cn(s.input, "visually-hidden")}
-              tabIndex={-1}
-              {...setInputChandeHandler(id)}
-            />
-            <label
-              aria-label={label}
-              className={cn(s.label, id === 0 && "visually-hidden")}
-              htmlFor={`${name}-${id}`}
-              tabIndex={isNotEditable ? -1 : id === 0 ? -1 : 0}
-            >
-              <Star />
-            </label>
-          </Fragment>
-        );
-      })}
-    </div>
+    <>
+      <div
+        {...divProps}
+        className={cn(s.raiting, isNotEditable && s.notEditable, isError && s.error)}
+      >
+        {isError && (
+          <div className={s.errorMessage}>
+            <ErrorMessage message={error} />
+          </div>
+        )}
+        {starValues.map((star) => {
+          const { label, id } = star;
+          return (
+            <Fragment key={id}>
+              <input
+                type="radio"
+                id={`${name}-${id}-${uniqKey ?? "key"}`}
+                name={name}
+                className={cn(s.input, "visually-hidden")}
+                tabIndex={-1}
+                {...setInputChandeHandler(id)}
+              />
+              <label
+                aria-label={label}
+                className={cn(s.label, id === 0 && "visually-hidden")}
+                htmlFor={`${name}-${id}-${uniqKey ?? "key"}`}
+                tabIndex={isNotEditable ? -1 : id === 0 ? -1 : 0}
+                {...setLabelRef(id)}
+              >
+                <Star />
+              </label>
+            </Fragment>
+          );
+        })}
+      </div>
+    </>
   );
 };
 

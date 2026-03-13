@@ -13,3 +13,4 @@ export { MainLogo } from "./mainLogo";
 export { CategoryTitle } from "./categoryTitle";
 export { SortButton } from "./sortButton";
 export { Card } from "./card";
+export { ErrorMessage } from "./errorMessage";

@@ -1,35 +1,49 @@
+@use "@/app/styles/variables.scss" as *;
+
 .wrapper {
   &:not(:first-child) {
     margin-top: 30px;
   }
-  overflow: hidden;
 }
 .form {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   margin: -20px -15px 0;
 }
 .item {
   padding: 20px 15px 0;
+  &.field {
+    width: 248px;
+    max-width: 33.3%;
+    @media (max-width: $media-tablet) {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
   &.fullWidth {
     width: 100%;
   }
   &.itemRaiting {
     margin-left: auto;
-    align-self: center;
+    max-width: 33.3%;
+    @media (max-width: $media-tablet) {
+      width: 100%;
+      max-width: 100%;
+    }
   }
 }
 .raiting {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin: -10px -10px 0;
+  margin: 0px -5px 0;
 }
 .raitngItem {
   display: flex;
   font-size: 14px;
   line-height: 19px;
-  padding: 10px 10px 0;
+  padding: 0px 5px 0;
 }
 .text {
   display: inline;
@@ -41,4 +55,7 @@
   width: 148px;
   text-align: center;
   margin-right: 10px;
+}
+.marginTop {
+  margin-top: 10px;
 }

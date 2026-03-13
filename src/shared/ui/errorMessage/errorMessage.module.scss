@@ -1,0 +1,13 @@
+.error {
+  color: var(--red);
+  font-size: 12px;
+  line-height: 15px;
+  &.big {
+    display: block;
+    background-color: var(--red);
+    color: var(--red-dark);
+    padding: 20px;
+    position: relative;
+    border-radius: 5px;
+  }
+}

@@ -5,6 +5,7 @@ import s from "./productWithReview.module.scss";
 import { Card } from "@/src/shared/ui";
 import { isDefinedArray } from "@/src/shared/libs";
 import { ProductReview, ReviewForm } from "@/src/entity/review/ui";
+import { useState } from "react";
 
 type Props = {
   product: ProductDto;
@@ -12,21 +13,29 @@ type Props = {
 
 const ProductWithReview: React.FC<Props> = ({ product }) => {
   const { reviews, _id } = product;
+  const [isReviewOpen, setIsReviewOpen] = useState(false);
+
+  const reviewButtonHandler = () => {
+    setIsReviewOpen((v) => !v);
+  };
+
   return (
     <div>
-      <Product data={product} />
-      <div className={s.review}>
-        <Card type="gray">
-          {isDefinedArray(reviews) && (
-            <>
-              {reviews.map((review) => {
-                return <ProductReview review={review} key={review._id} />;
-              })}
-            </>
-          )}
-          <ReviewForm productId={_id} />
-        </Card>
-      </div>
+      <Product data={product} isReviewOpen={isReviewOpen} readReviewHanlder={reviewButtonHandler} />
+      {isReviewOpen && (
+        <div className={s.review}>
+          <Card type="gray">
+            {isDefinedArray(reviews) && (
+              <>
+                {reviews.map((review) => {
+                  return <ProductReview review={review} key={review._id} />;
+                })}
+              </>
+            )}
+            <ReviewForm productId={_id} />
+          </Card>
+        </div>
+      )}
     </div>
   );
 };

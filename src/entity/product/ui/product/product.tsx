@@ -15,10 +15,11 @@ import Image from "next/image";
 
 type Props = {
   data: ProductDto;
+  isReviewOpen?: boolean;
   readReviewHanlder?: () => void;
 };
 
-const Product: React.FC<Props> = ({ data, readReviewHanlder }) => {
+const Product: React.FC<Props> = ({ data, isReviewOpen = false, readReviewHanlder }) => {
   const {
     title,
     image,
@@ -154,7 +155,11 @@ const Product: React.FC<Props> = ({ data, readReviewHanlder }) => {
             <CustomButton appearance="primary">Узнать подробнее</CustomButton>
           </div>
           <div className={s.btn}>
-            <CustomButton appearance="ghost" arrow="right" onClick={onReadReview}>
+            <CustomButton
+              appearance="ghost"
+              arrow={isReviewOpen ? "down" : "right"}
+              onClick={onReadReview}
+            >
               Читать отзывы
             </CustomButton>
           </div>
