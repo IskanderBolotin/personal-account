@@ -15,7 +15,7 @@ type OwnProps = {
 type Props = OwnProps & Omit<ComponentProps<"textarea">, keyof OwnProps>;
 
 const TextArea: React.FC<Props> = ({
-  value,
+  value = "",
   onChange,
   error,
   textAreaRef,
@@ -34,10 +34,10 @@ const TextArea: React.FC<Props> = ({
     <div className={s.field}>
       <textarea
         className={cn(s.textArea, className, isError && s.error)}
-        value={value}
         onChange={changeHandler}
         {...otherProps}
         ref={textAreaRef}
+        value={value}
       />
       {isError && (
         <div className={s.errorMessage}>

@@ -11,7 +11,11 @@ const withMainLayout = <T extends Record<string, unknown> & DefaultPageProps>(
     return (
       <MainLayout
         mainContent={<Component {...props} />}
-        sidebarContent={<AppNavigation menu={menu} category={category} navClassName={s.nav} />}
+        sidebarContent={
+          <div className={s.nav}>
+            <AppNavigation menu={menu} category={category} />
+          </div>
+        }
       />
     );
   };

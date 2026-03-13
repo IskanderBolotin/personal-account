@@ -40,10 +40,16 @@
     height: 100%;
     object-fit: cover;
   }
+  @media (max-width: $media-tablet) {
+    margin-right: 15px;
+  }
 }
 .title {
   &:not(:last-child) {
     margin-bottom: 9px;
+    @media (max-width: $media-tablet) {
+      margin-bottom: 4px;
+    }
   }
   .mainTitle {
     font-weight: 600;
@@ -53,10 +59,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  margin: 0 -20px;
+  margin: -10px -20px 0;
 }
 .rightItem {
-  padding: 0 20px;
+  padding: 10px 20px 0;
 }
 .rightMain {
   display: flex;
@@ -69,14 +75,33 @@
   font-size: 14px;
   line-height: 19px;
 }
+.raitingButton {
+  cursor: pointer;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 19px;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  text-underline-offset: 4px;
+  &:hover {
+    text-decoration: underline;
+  }
+}
 .price {
   white-space: nowrap;
   font-weight: 400;
   font-size: 20px;
-  line-height: 27px;
+  line-height: 1.35;
   vertical-align: middle;
   .sub {
     font-size: 14px;
+  }
+  @media (max-width: $media-laptop) {
+    font-size: 18px;
+  }
+  @media (max-width: $media-tablet) {
+    font-size: 16px;
   }
 }
 .oldPrice {

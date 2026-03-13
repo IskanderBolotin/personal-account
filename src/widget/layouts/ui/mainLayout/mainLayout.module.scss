@@ -1,3 +1,5 @@
+@use "@/app/styles/variables.scss" as *;
+
 .layout {
   display: flex;
   flex-direction: column;
@@ -10,6 +12,7 @@
 .content {
   flex-grow: 1;
   display: flex;
+  flex-wrap: wrap;
   margin: 0 -15px;
   padding-bottom: 50px;
   padding-top: 30px;
@@ -19,10 +22,16 @@
   padding: 0 15px;
   display: flex;
   flex-direction: column;
+  @media (max-width: $media-tablet) {
+    width: 100%;
+  }
 }
 .main {
   width: calc(100% - 260px);
   padding: 0 15px;
+  @media (max-width: $media-tablet) {
+    width: 100%;
+  }
 }
 .logo {
   margin-bottom: 20px;

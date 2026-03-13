@@ -10,4 +10,7 @@
   &.gray {
     background-color: #f9f8ff;
   }
+  @media (max-width: $media-tablet) {
+    padding: 15px;
+  }
 }

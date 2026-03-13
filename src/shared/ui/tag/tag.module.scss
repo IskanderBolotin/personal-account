@@ -9,6 +9,7 @@
   &.default {
     background-color: var(--white);
     border: 1px solid var(--gray-light);
+    line-height: 12px;
     .inner {
       padding: 4px 11px;
       font-weight: 400;
@@ -19,6 +20,7 @@
   }
   &.primary {
     border: 1px solid var(--primary);
+    line-height: 12px;
     .inner {
       padding: 4px 7px;
       font-weight: 500;
@@ -29,6 +31,7 @@
   }
   &.common {
     background-color: var(--gray-dark);
+    line-height: 14px;
     .inner {
       padding: 5px 10px;
       font-weight: 500;
@@ -39,6 +42,7 @@
   }
   &.green {
     background-color: var(--green-light);
+    line-height: 12px;
     .inner {
       padding: 5px 8px;
       font-weight: 600;
@@ -49,6 +53,7 @@
   }
   &.red {
     background-color: var(--red-dark);
+    line-height: 14px;
     .inner {
       padding: 5px 10px;
       font-weight: 500;

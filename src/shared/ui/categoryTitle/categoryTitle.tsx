@@ -1,3 +1,4 @@
+import { Fragment } from "react/jsx-runtime";
 import { isDefined } from "../../libs";
 import { Tag } from "../tag";
 import { TagType } from "../tag/tagType";
@@ -19,18 +20,34 @@ const CategoryTitle: React.FC<Props> = ({
   tagType = "common",
   titleAs = "h1",
 }) => {
+  const titleWords = title.split(" ");
+
   return (
     <div className={s.title}>
       <div className={s.item}>
         <Title level={titleLevel} as={titleAs}>
-          {title}
+          {titleWords?.map((titleItem, index) => {
+            if (index === titleWords.length - 1) {
+              return (
+                <span className={s.lastElemnt} key={index}>
+                  {titleItem}{" "}
+                  {isDefined(tagTitle) && (
+                    <Tag type={tagType} className={s.tag}>
+                      {tagTitle}
+                    </Tag>
+                  )}
+                </span>
+              );
+            }
+            return (
+              <Fragment key={index}>
+                <span>{titleItem}</span>{" "}
+              </Fragment>
+            );
+          })}
         </Title>
+        {}
       </div>
-      {isDefined(tagTitle) && (
-        <div className={s.item}>
-          <Tag type={tagType}>{tagTitle}</Tag>
-        </div>
-      )}
     </div>
   );
 };

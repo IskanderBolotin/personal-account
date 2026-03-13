@@ -3,7 +3,7 @@ import { RaitnigValuesType } from "@/src/shared/ui/raiting";
 export type ReviewFormModel = {
   name: string;
   title: string;
-  description?: string;
+  description: string;
   rating: RaitnigValuesType;
 };
 

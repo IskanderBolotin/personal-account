@@ -153,8 +153,8 @@ ol[role="list"] {
 }
 .container {
   width: 100%;
-  max-width: 1510px;
-  padding: 0 25px;
+  max-width: 1500px;
+  padding: 0 20px;
   margin: 0 auto;
 }
 .visually-hidden {
@@ -172,4 +172,10 @@ ol[role="list"] {
 }
 .margin-right-auto {
   margin-right: auto;
+}
+.pageSection {
+  margin-bottom: 45px;
+  @media (max-width: $media-tablet) {
+    margin-bottom: 30px;
+  }
 }

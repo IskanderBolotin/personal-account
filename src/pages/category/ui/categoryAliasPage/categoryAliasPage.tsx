@@ -59,7 +59,7 @@ const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ page, products }) => 
           />
         </div>
       </div>
-      <section className={s.section}>
+      <section className="pageSection">
         {sortedProducts.map((product) => (
           <div style={{ marginBottom: "10px" }} key={product._id}>
             <ProductWithReview product={product} />
@@ -67,14 +67,12 @@ const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ page, products }) => 
         ))}
       </section>
       {isDefined(page.hh) && (
-        <Vacancy title={page.category} {...page.hh} wrapperClassName={s.section} />
+        <Vacancy title={page.category} {...page.hh} wrapperClassName="pageSection" />
       )}
       {isDefinedArray(page.advantages) && (
-        <Advantages data={page.advantages} wrapperClassName={s.section} seoText={page.seoText} />
+        <Advantages data={page.advantages} wrapperClassName="pageSection" seoText={page.seoText} />
       )}
-      {isDefinedArray(page.tags) && (
-        <Skills title={page.tagsTitle} data={page.tags} wrapperClassName={s.section} />
-      )}
+      {isDefinedArray(page.tags) && <Skills title={page.tagsTitle} data={page.tags} />}
     </>
   );
 };

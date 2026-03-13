@@ -28,7 +28,7 @@ const ReviewForm: React.FC<Props> = ({ productId }) => {
     try {
       await reviewService.postCreateDemo({ ...data, productId });
       setIsSuccess(true);
-      reset({});
+      reset();
     } catch (e) {
       setError("Ошибка");
       setIsSuccess(false);

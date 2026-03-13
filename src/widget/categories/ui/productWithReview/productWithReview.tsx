@@ -5,7 +5,7 @@ import s from "./productWithReview.module.scss";
 import { Card } from "@/src/shared/ui";
 import { isDefinedArray } from "@/src/shared/libs";
 import { ProductReview, ReviewForm } from "@/src/entity/review/ui";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 type Props = {
   product: ProductDto;
@@ -14,6 +14,12 @@ type Props = {
 const ProductWithReview: React.FC<Props> = ({ product }) => {
   const { reviews, _id } = product;
   const [isReviewOpen, setIsReviewOpen] = useState(false);
+  const reviewRef = useRef<HTMLDivElement>(null);
+
+  const scrollToReview = () => {
+    setIsReviewOpen(true);
+    reviewRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   const reviewButtonHandler = () => {
     setIsReviewOpen((v) => !v);
@@ -21,9 +27,14 @@ const ProductWithReview: React.FC<Props> = ({ product }) => {
 
   return (
     <div>
-      <Product data={product} isReviewOpen={isReviewOpen} readReviewHanlder={reviewButtonHandler} />
+      <Product
+        data={product}
+        isReviewOpen={isReviewOpen}
+        readReviewHanlder={reviewButtonHandler}
+        raitngHandler={scrollToReview}
+      />
       {isReviewOpen && (
-        <div className={s.review}>
+        <div className={s.review} ref={reviewRef}>
           <Card type="gray">
             {isDefinedArray(reviews) && (
               <>

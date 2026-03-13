@@ -17,9 +17,15 @@ type Props = {
   data: ProductDto;
   isReviewOpen?: boolean;
   readReviewHanlder?: () => void;
+  raitngHandler?: () => void;
 };
 
-const Product: React.FC<Props> = ({ data, isReviewOpen = false, readReviewHanlder }) => {
+const Product: React.FC<Props> = ({
+  data,
+  isReviewOpen = false,
+  readReviewHanlder,
+  raitngHandler,
+}) => {
   const {
     title,
     image,
@@ -97,7 +103,12 @@ const Product: React.FC<Props> = ({ data, isReviewOpen = false, readReviewHanlde
                 <Raiting defaultValue={isDefinedNumber(reviewAvg) ? reviewAvg : 0} isNotEditable />
               </div>
               <div className={s.rightSub}>
-                {declineWordAfterNumber(reviewCount, ["отзыв", "отзыва", "отзывов"])}
+                <button
+                  className={s.raitingButton}
+                  onClick={() => isDefinedFn(raitngHandler) && raitngHandler()}
+                >
+                  {declineWordAfterNumber(reviewCount, ["отзыв", "отзыва", "отзывов"])}
+                </button>
               </div>
             </div>
           </div>
