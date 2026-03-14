@@ -1,3 +1,9 @@
 .review {
   margin-top: -5px;
 }
+.card {
+  display: none;
+  &.open {
+    display: block;
+  }
+}

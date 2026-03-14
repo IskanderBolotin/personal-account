@@ -56,19 +56,21 @@ const Product: React.FC<Props> = ({
             <div className={s.image}>
               <Image src={`${image}`} alt={title} width={70} height={70} quality={100} />
             </div>
-            <div>
+            <div className={s.mainInfo}>
               <div className={s.title}>
                 <Title as="h3" level={3} className={s.mainTitle}>
                   {title}
                 </Title>
               </div>
               {isDefinedArray(categories) && (
-                <div className={s.categories}>
-                  {categories.map((category) => (
-                    <div className={s.category} key={category}>
-                      <Tag type="default">{category}</Tag>
-                    </div>
-                  ))}
+                <div className={s.categoryWrapper}>
+                  <div className={s.categories}>
+                    {categories.map((category) => (
+                      <div className={s.category} key={category}>
+                        <Tag type="default">{category}</Tag>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>

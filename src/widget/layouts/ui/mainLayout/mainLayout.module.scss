@@ -16,6 +16,10 @@
   margin: 0 -15px;
   padding-bottom: 50px;
   padding-top: 30px;
+  @media (max-width: $media-tablet) {
+    padding-top: 15px;
+    padding-bottom: 35px;
+  }
 }
 .sidebar {
   width: 260px;

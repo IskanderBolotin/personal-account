@@ -1,3 +1,5 @@
+@use "@/app/styles/variables.scss" as *;
+
 .topTitle {
   display: flex;
   flex-wrap: wrap;
@@ -7,6 +9,9 @@
   margin-top: -10px;
   margin-left: -10px;
   margin-right: -10px;
+  @media (max-width: $media-tablet) {
+    margin-bottom: 10px;
+  }
 }
 .topItem {
   padding: 10px 10px 0;

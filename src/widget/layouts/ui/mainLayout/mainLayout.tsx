@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import s from "./mainLayout.module.scss";
-import { AppFooter, MainLogo } from "@/src/shared/ui";
+import { AppFooter, AppHeader, MainLogo, UpButton } from "@/src/shared/ui";
 import { Search } from "@/src/feature/mainSearch/ui";
 
 type Props = {
@@ -10,23 +10,28 @@ type Props = {
 
 const MainLayout: React.FC<Props> = ({ mainContent, sidebarContent }) => {
   return (
-    <div className={s.layout}>
-      <div className="container">
-        <div className={s.content}>
-          <div className={s.sidebar}>
-            <div className={s.logo}>
-              <MainLogo />
-            </div>
-            <div className={s.search}>
-              <Search />
-            </div>
-            {sidebarContent}
+    <>
+      <div className={s.layout}>
+        <div className="container">
+          <div className={s.content}>
+            <AppHeader>
+              <div className={s.sidebar}>
+                <div className={s.logo}>
+                  <MainLogo />
+                </div>
+                <div className={s.search}>
+                  <Search />
+                </div>
+                {sidebarContent}
+              </div>
+            </AppHeader>
+            <main className={s.main}>{mainContent}</main>
           </div>
-          <main className={s.main}>{mainContent}</main>
         </div>
+        <AppFooter />
       </div>
-      <AppFooter />
-    </div>
+      <UpButton />
+    </>
   );
 };
 

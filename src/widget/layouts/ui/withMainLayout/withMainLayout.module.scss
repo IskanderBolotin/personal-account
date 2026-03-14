@@ -1,9 +1,6 @@
 @use "@/app/styles/variables.scss" as *;
 
 .nav {
-  flex-grow: 1;
-  height: 0px;
-  overflow: auto;
   @media (max-width: $media-tablet) {
     width: 100%;
   }

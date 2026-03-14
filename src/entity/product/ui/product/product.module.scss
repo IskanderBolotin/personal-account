@@ -44,6 +44,12 @@
     margin-right: 15px;
   }
 }
+.mainInfo {
+  max-width: calc(100% - 100px);
+  @media (max-width: $media-tablet) {
+    max-width: calc(100% - 85px);
+  }
+}
 .title {
   &:not(:last-child) {
     margin-bottom: 9px;
@@ -60,15 +66,27 @@
   flex-wrap: wrap;
   align-items: flex-start;
   margin: -10px -20px 0;
+  @media (max-width: $media-tablet) {
+    margin: -10px -10px 0;
+  }
 }
 .rightItem {
   padding: 10px 20px 0;
+  @media (max-width: $media-tablet) {
+    padding: 10px 10px 0;
+  }
 }
 .rightMain {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   min-height: 27px;
+  @media (max-width: $media-laptop) {
+    min-height: 24px;
+  }
+  @media (max-width: $media-tablet) {
+    min-height: 22px;
+  }
 }
 .rightSub {
   font-weight: 300;
@@ -106,6 +124,23 @@
 }
 .oldPrice {
   vertical-align: middle;
+}
+.categoryWrapper {
+  max-width: 100%;
+  @media (max-width: $media-tablet) {
+    overflow: auto;
+    white-space: nowrap;
+    .categories {
+      margin: 0;
+      flex-wrap: nowrap;
+    }
+    .category {
+      padding: 0;
+      &:not(:last-child) {
+        padding-right: 5px;
+      }
+    }
+  }
 }
 .categories {
   display: flex;
@@ -186,4 +221,7 @@
   flex-grow: 1;
   margin: 0 15px;
   border-bottom: 1px dotted #c4c4c4;
+  @media (max-width: $media-laptop) {
+    margin: 0 5px;
+  }
 }

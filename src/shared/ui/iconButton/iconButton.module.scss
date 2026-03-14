@@ -6,6 +6,9 @@
   border-radius: 5px;
   font-size: 14px;
   padding: 2px;
+  &.shadow {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+  }
   &.size-s {
     width: 30px;
     height: 30px;
@@ -44,6 +47,21 @@
   &:hover {
     background-color: var(--primary-hover);
     border-color: var(--primary-hover);
+  }
+}
+
+.white {
+  color: var(--primary);
+  background-color: var(--white);
+  border: 1px solid var(--white);
+  transition:
+    background-color 0.25s,
+    border-color 0.25s,
+    color 0.25s;
+  &:hover {
+    background-color: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
   }
 }
 
