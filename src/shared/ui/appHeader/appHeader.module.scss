@@ -5,13 +5,16 @@
   display: none;
   align-items: center;
   justify-content: space-between;
-  padding: 0 15px;
+  padding: 0 15px 15px;
   @media (max-width: $media-tablet) {
     display: flex;
   }
 }
 .fixedmenu {
   @media (max-width: $media-tablet) {
+    overscroll-behavior: contain;
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 0;
     left: 0;
@@ -19,10 +22,20 @@
     bottom: 0;
     background-color: var(--color-background);
     z-index: 1;
-    overflow: auto;
     padding: 15px 0;
+    transform: translateX(-100%);
+    transition: 0.25s transform;
+    &.open {
+      transform: translateX(0);
+    }
   }
 }
 .close {
   display: none;
+  @media (max-width: $media-tablet) {
+    display: block;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+  }
 }

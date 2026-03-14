@@ -1,7 +1,7 @@
 import cn from "classnames";
 import s from "./appNavigation.module.scss";
 import { CollapsableContent } from "@/src/shared/ui";
-import { isDefined, isDefinedArray } from "@/src/shared/libs";
+import { isDefined, isDefinedArray, isDefinedFn } from "@/src/shared/libs";
 import { NavigationDto } from "../../model";
 import Link from "next/link";
 import { LevelCategoryEnum } from "@/src/shared/model";
@@ -12,9 +12,10 @@ type Props = {
   menu?: NavigationDto[];
   category?: LevelCategoryEnum;
   navClassName?: string;
+  linkHandler?: () => void;
 };
 
-const AppNavigation: React.FC<Props> = ({ menu, category, navClassName }) => {
+const AppNavigation: React.FC<Props> = ({ menu, category, navClassName, linkHandler }) => {
   const { query } = useRouter();
 
   const currentAliasPath = isDefined(query.alias)
@@ -22,6 +23,12 @@ const AppNavigation: React.FC<Props> = ({ menu, category, navClassName }) => {
       ? query.alias
       : query.alias[0]
     : "";
+
+  const onLinkClick = () => {
+    if (isDefinedFn(linkHandler)) {
+      linkHandler();
+    }
+  };
 
   return (
     <nav className={cn(s.nav, navClassName)}>
@@ -33,7 +40,7 @@ const AppNavigation: React.FC<Props> = ({ menu, category, navClassName }) => {
 
           return (
             <li className={s.menuItem} key={key}>
-              <Link href={`/${key}`}>
+              <Link href={`/${key}`} onClick={onLinkClick}>
                 <span className={cn(s.mainTitle, s.title, isOpen && s.active)}>
                   <span className={s.icon}>{icon}</span>
                   {title}
@@ -68,6 +75,7 @@ const AppNavigation: React.FC<Props> = ({ menu, category, navClassName }) => {
                                       <Link
                                         className={cn(s.categoryTitle, s.title, isOpen && s.active)}
                                         href={`/${key}/${alias}`}
+                                        onClick={onLinkClick}
                                       >
                                         {title}
                                       </Link>

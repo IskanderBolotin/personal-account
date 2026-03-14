@@ -5,26 +5,30 @@ import { Search } from "@/src/feature/mainSearch/ui";
 
 type Props = {
   mainContent?: ReactNode;
-  sidebarContent?: ReactNode;
+  renderSidebar: (linkHandler: () => void) => ReactNode;
 };
 
-const MainLayout: React.FC<Props> = ({ mainContent, sidebarContent }) => {
+const MainLayout: React.FC<Props> = ({ mainContent, renderSidebar }) => {
   return (
     <>
       <div className={s.layout}>
         <div className="container">
           <div className={s.content}>
-            <AppHeader>
-              <div className={s.sidebar}>
-                <div className={s.logo}>
-                  <MainLogo />
-                </div>
-                <div className={s.search}>
-                  <Search />
-                </div>
-                {sidebarContent}
-              </div>
-            </AppHeader>
+            <AppHeader
+              renderMenu={(linkHandler) => {
+                return (
+                  <div className={s.sidebar}>
+                    <div className={s.logo}>
+                      <MainLogo />
+                    </div>
+                    <div className={s.search}>
+                      <Search />
+                    </div>
+                    <div className={s.menu}>{renderSidebar(linkHandler)}</div>
+                  </div>
+                );
+              }}
+            ></AppHeader>
             <main className={s.main}>{mainContent}</main>
           </div>
         </div>
