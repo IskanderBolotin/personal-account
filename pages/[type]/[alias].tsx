@@ -3,7 +3,6 @@ import { getStaticProps, getStaticPaths } from "@/src/pages/category/model/getAl
 import { CategoryAliasPageWithLayout } from "@/src/pages/category/ui";
 
 const CategoryAlias: React.FC<CategoryAliasProps> = ({ menu, category, products, page }) => {
-  console.log(page, products);
   return (
     <CategoryAliasPageWithLayout menu={menu} category={category} products={products} page={page} />
   );

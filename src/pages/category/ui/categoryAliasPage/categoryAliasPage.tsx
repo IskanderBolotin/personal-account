@@ -3,14 +3,17 @@ import { CategoryAliasProps } from "../../model";
 import s from "./categoryAliasPage.module.scss";
 import { CategoryTitle } from "@/src/shared/ui";
 import { Advantages, ProductWithReview, Skills, Vacancy } from "@/src/widget/categories/ui";
-import { isDefined, isDefinedArray } from "@/src/shared/libs";
+import { isDefined, isDefinedArray, isDefinedString } from "@/src/shared/libs";
 import { ProductSort } from "@/src/entity/product/ui";
 import { useEffect, useReducer } from "react";
 import { SortEnum, sortReducer } from "@/src/entity/product/model";
 import { SortType } from "@/src/shared/ui/sortButton/sortType";
+import Head from "next/head";
 
 const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ page, products }) => {
   const [{ products: sortedProducts }, dispatch] = useReducer(sortReducer, { products });
+
+  const { metaTitle, metaDescription } = page;
 
   useEffect(() => {
     dispatch({ type: "RESET", payload: products });
@@ -48,6 +51,10 @@ const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ page, products }) => 
 
   return (
     <>
+      <Head>
+        {isDefinedString(metaTitle) && <title>{metaTitle}</title>}
+        {isDefinedString(metaDescription) && <meta name="description" content={metaDescription} />}
+      </Head>
       <div className={s.topTitle}>
         <div className={s.topItem}>
           <CategoryTitle title={page.title} tagTitle={products?.length} />
