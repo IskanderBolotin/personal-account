@@ -1,0 +1,39 @@
+@use "@/app/styles/variables.scss" as *;
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.menuItem {
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+.category {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: 0;
+  padding: 0;
+  margin: -10px -5px 0;
+}
+.categoryItem {
+  padding: 10px 5px 0;
+}
+.title {
+  display: block;
+  padding: 10px;
+  background-color: var(--white);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  border-radius: 5px;
+}
+.categoryTitle {
+  margin-bottom: 10px;
+}

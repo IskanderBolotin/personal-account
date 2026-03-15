@@ -1,4 +1,4 @@
-import { Fragment, InputHTMLAttributes, LabelHTMLAttributes, useEffect, useState } from "react";
+import { Fragment, InputHTMLAttributes, KeyboardEvent, useEffect, useState } from "react";
 import cn from "classnames";
 import Star from "./images/star.svg";
 import s from "./raiting.module.scss";
@@ -7,7 +7,6 @@ import { isDefinedFn, isDefinedString } from "../../libs";
 import { HtmlElementPropsType } from "../../model";
 import { RefCallBack } from "react-hook-form";
 import { ErrorMessage } from "../errorMessage";
-import { de } from "date-fns/locale";
 
 const starValues = [
   { label: "", id: 0 },
@@ -93,6 +92,13 @@ const Raiting: React.FC<Props> = ({
     return props;
   };
 
+  const labelKeyDownHandler = (e: KeyboardEvent, currentId: number) => {
+    if (e.code === "Space" || e.code === "Enter") {
+      e.preventDefault();
+      setCheckedId(currentId);
+    }
+  };
+
   return (
     <>
       <div
@@ -122,6 +128,7 @@ const Raiting: React.FC<Props> = ({
                 htmlFor={`${name}-${id}-${uniqKey ?? "key"}`}
                 tabIndex={isNotEditable ? -1 : id === 0 ? -1 : 0}
                 {...setLabelRef(id)}
+                onKeyDown={(e) => labelKeyDownHandler(e, id)}
               >
                 <Star />
               </label>

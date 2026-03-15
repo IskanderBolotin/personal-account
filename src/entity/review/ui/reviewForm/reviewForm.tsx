@@ -53,6 +53,7 @@ const ReviewForm: React.FC<Props> = ({ productId }) => {
                     placeholder="Имя"
                     name={name}
                     onChange={onChange}
+                    onBlur={(e) => onChange(e.target.value.trim())}
                     value={value}
                     textInputRef={ref}
                     error={error?.message}
@@ -76,6 +77,7 @@ const ReviewForm: React.FC<Props> = ({ productId }) => {
                     name={name}
                     value={value}
                     onChange={onChange}
+                    onBlur={(e) => onChange(e.target.value.trim())}
                     textInputRef={ref}
                     error={error?.message}
                   />
@@ -125,6 +127,7 @@ const ReviewForm: React.FC<Props> = ({ productId }) => {
                     placeholder="Текст отзыва"
                     name={name}
                     onChange={onChange}
+                    onBlur={(e) => onChange(e.target.value.trim())}
                     textAreaRef={ref}
                     error={error?.message}
                   />

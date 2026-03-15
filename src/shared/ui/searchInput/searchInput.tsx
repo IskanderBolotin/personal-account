@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { KeyboardEvent, useState } from "react";
 import { IconButton } from "../iconButton";
 import { TextInput } from "../textInput";
 import { TextInputProps } from "../textInput/textInput";
 import IconSearch from "./images/search.svg";
 import s from "./searchInput.module.scss";
-import { isDefinedFn, isDefinedString } from "../../libs";
+import { isDefinedFn } from "../../libs";
 
 type OwnProps = {
   onSearh?: (value?: string) => void;
@@ -17,6 +17,7 @@ const SearchInput: React.FC<Props> = ({
   value = "",
   placeholder = "Поиск",
   onChange,
+  onKeyDown,
   ...otherProps
 }) => {
   const [searchValue, setSearchValue] = useState(value);
@@ -34,6 +35,15 @@ const SearchInput: React.FC<Props> = ({
     }
   };
 
+  const keyDownHandler = (e: KeyboardEvent) => {
+    if (e.code === "Space" || e.code === "Enter") {
+      e.preventDefault();
+      if (isDefinedFn(onSearh)) {
+        onSearh(searchValue);
+      }
+    }
+  };
+
   return (
     <div className={s.wrapper}>
       <TextInput
@@ -41,6 +51,7 @@ const SearchInput: React.FC<Props> = ({
         value={searchValue}
         placeholder={placeholder}
         onChange={changeInputHandler}
+        onKeyDown={(e) => keyDownHandler(e)}
         {...otherProps}
       />
       <div className={s.button}>

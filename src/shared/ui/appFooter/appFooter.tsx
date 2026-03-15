@@ -6,10 +6,10 @@ const AppFooter: React.FC = () => {
     <footer className={s.footer}>
       <div className="container">
         <ul className={s.list}>
-          <div className={s.item}>
+          <div className={cn(s.item, "margin-right-auto")}>
             <p className={s.text}>OwlTop © 2020 - 2021 Все права защищены</p>
           </div>
-          <div className={cn(s.item, "margin-left-auto")}>
+          <div className={s.item}>
             <p className={s.text}>Пользовательское соглашение</p>
           </div>
           <div className={s.item}>

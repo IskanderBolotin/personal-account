@@ -59,7 +59,10 @@ const AppNavigation: React.FC<Props> = ({ menu, category, navClassName, linkHand
                         {isDefinedArray(pages) && (
                           <CollapsableContent
                             triggerElement={
-                              <span className={cn(s.subTitle, s.title, isOpen && s.active)}>
+                              <span
+                                className={cn(s.subTitle, s.title, isOpen && s.active)}
+                                tabIndex={0}
+                              >
                                 {_id.secondCategory}
                               </span>
                             }
