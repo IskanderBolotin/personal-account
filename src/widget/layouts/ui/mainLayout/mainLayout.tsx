@@ -29,7 +29,9 @@ const MainLayout: React.FC<Props> = ({ mainContent, renderSidebar }) => {
                 );
               }}
             ></AppHeader>
-            <main className={s.main}>{mainContent}</main>
+            <main className={s.main} role="main">
+              {mainContent}
+            </main>
           </div>
         </div>
         <AppFooter />

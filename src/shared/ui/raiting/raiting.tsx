@@ -1,9 +1,9 @@
-import { Fragment, InputHTMLAttributes, KeyboardEvent, useEffect, useState } from "react";
+import { Fragment, InputHTMLAttributes, KeyboardEvent, useEffect, useRef, useState } from "react";
 import cn from "classnames";
 import Star from "./images/star.svg";
 import s from "./raiting.module.scss";
 import { RaitnigValuesType } from "./raitnigTypes";
-import { isDefinedFn, isDefinedString } from "../../libs";
+import { isDefined, isDefinedFn, isDefinedString } from "../../libs";
 import { HtmlElementPropsType } from "../../model";
 import { RefCallBack } from "react-hook-form";
 import { ErrorMessage } from "../errorMessage";
@@ -37,6 +37,7 @@ const Raiting: React.FC<Props> = ({
   onChangeHandler,
   ...divProps
 }) => {
+  const raitingRefs = useRef<HTMLLabelElement[]>([]);
   const [checkedId, setCheckedId] = useState<number>(defaultValue);
   const isError = isDefinedString(error);
 
@@ -97,6 +98,18 @@ const Raiting: React.FC<Props> = ({
       e.preventDefault();
       setCheckedId(currentId);
     }
+    if (e.code === "ArrowLeft") {
+      if (currentId !== 0) {
+        raitingRefs.current[currentId - 1].focus();
+        setCheckedId(currentId - 1);
+      }
+    }
+    if (e.code === "ArrowRight") {
+      if (currentId !== 5) {
+        raitingRefs.current[currentId + 1].focus();
+        setCheckedId(currentId + 1);
+      }
+    }
   };
 
   return (
@@ -120,6 +133,7 @@ const Raiting: React.FC<Props> = ({
                 name={name}
                 className={cn(s.input, "visually-hidden")}
                 tabIndex={-1}
+                value={id}
                 {...setInputChandeHandler(id)}
               />
               <label
@@ -129,6 +143,11 @@ const Raiting: React.FC<Props> = ({
                 tabIndex={isNotEditable ? -1 : id === 0 ? -1 : 0}
                 {...setLabelRef(id)}
                 onKeyDown={(e) => labelKeyDownHandler(e, id)}
+                ref={(element) => {
+                  if (isDefined(element)) {
+                    raitingRefs.current.push(element);
+                  }
+                }}
               >
                 <Star />
               </label>

@@ -172,6 +172,7 @@ const Product: React.FC<Props> = ({
               appearance="ghost"
               arrow={isReviewOpen ? "down" : "right"}
               onClick={onReadReview}
+              aria-expanded={isReviewOpen}
             >
               Читать отзывы
             </CustomButton>

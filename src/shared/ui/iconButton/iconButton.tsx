@@ -1,6 +1,6 @@
 import cn from "classnames";
 import s from "./iconButton.module.scss";
-import { HtmlElementPropsType } from "../../model";
+import { HtmlButtonElementPropsType } from "../../model";
 import { SVGProps } from "react";
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
   appearance?: "primary" | "ghost" | "white";
   size?: "s" | "m" | "l";
   shadow?: boolean;
-} & HtmlElementPropsType<HTMLButtonElement>;
+} & HtmlButtonElementPropsType<HTMLButtonElement>;
 
 const IconButton: React.FC<Props> = ({
   icon: Icon,

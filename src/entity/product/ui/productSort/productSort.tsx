@@ -2,7 +2,7 @@ import { SortButton } from "@/src/shared/ui";
 import s from "./productSort.module.scss";
 import { useState } from "react";
 import { SortType } from "@/src/shared/ui/sortButton/sortType";
-import { isDefinedFn } from "@/src/shared/libs";
+import { isDefined, isDefinedFn } from "@/src/shared/libs";
 
 type Props = {
   onClickRaitingSort?: (sort?: SortType) => void;
@@ -50,10 +50,22 @@ const ProductSort: React.FC<Props> = ({ onClickRaitingSort, onClickPriceSort }) 
   return (
     <div className={s.sort}>
       <div className={s.item}>
-        <SortButton title="По рейтингу" onClick={raitingHandler} sort={sortTypeRaiting} />
+        <SortButton
+          title="По рейтингу"
+          onClick={raitingHandler}
+          sort={sortTypeRaiting}
+          aria-selected={isDefined(sortTypeRaiting)}
+          aria-label="Сортировка по рейтингу"
+        />
       </div>
       <div className={s.item}>
-        <SortButton title="По цене" onClick={priceHandler} sort={sortTypePrice} />
+        <SortButton
+          title="По цене"
+          onClick={priceHandler}
+          sort={sortTypePrice}
+          aria-selected={isDefined(sortTypePrice)}
+          aria-label="Сортировка по цене"
+        />
       </div>
     </div>
   );

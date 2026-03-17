@@ -31,7 +31,7 @@ const AppNavigation: React.FC<Props> = ({ menu, category, navClassName, linkHand
   };
 
   return (
-    <nav className={cn(s.nav, navClassName)}>
+    <nav className={cn(s.nav, navClassName)} role="navigation">
       <ul className={s.menu}>
         {mainNavigationConfig?.map((mainItem) => {
           const { id, title, icon, key } = mainItem;
@@ -39,7 +39,7 @@ const AppNavigation: React.FC<Props> = ({ menu, category, navClassName, linkHand
           const isOpen = category === id;
 
           return (
-            <li className={s.menuItem} key={key}>
+            <li className={s.menuItem} key={key} aria-expanded={isOpen}>
               <Link href={`/${key}`} onClick={onLinkClick}>
                 <span className={cn(s.mainTitle, s.title, isOpen && s.active)}>
                   <span className={s.icon}>{icon}</span>
@@ -55,7 +55,7 @@ const AppNavigation: React.FC<Props> = ({ menu, category, navClassName, linkHand
                     const isOpen = pages.map((page) => page.alias).includes(currentAliasPath);
 
                     return (
-                      <li className={s.subMenuItem} key={_id.secondCategory}>
+                      <li className={s.subMenuItem} key={_id.secondCategory} aria-expanded={isOpen}>
                         {isDefinedArray(pages) && (
                           <CollapsableContent
                             triggerElement={
@@ -79,6 +79,7 @@ const AppNavigation: React.FC<Props> = ({ menu, category, navClassName, linkHand
                                         className={cn(s.categoryTitle, s.title, isOpen && s.active)}
                                         href={`/${key}/${alias}`}
                                         onClick={onLinkClick}
+                                        aria-current={isOpen ? "page" : false}
                                       >
                                         {title}
                                       </Link>

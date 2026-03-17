@@ -45,7 +45,7 @@ const SearchInput: React.FC<Props> = ({
   };
 
   return (
-    <div className={s.wrapper}>
+    <form className={s.wrapper} role="search">
       <TextInput
         className={s.input}
         value={searchValue}
@@ -55,9 +55,15 @@ const SearchInput: React.FC<Props> = ({
         {...otherProps}
       />
       <div className={s.button}>
-        <IconButton icon={IconSearch} size="s" onClick={() => seacrchHandler(searchValue)} />
+        <IconButton
+          icon={IconSearch}
+          size="s"
+          onClick={() => seacrchHandler(searchValue)}
+          aria-label="Искать по сайту"
+          type="button"
+        />
       </div>
-    </div>
+    </form>
   );
 };
 
