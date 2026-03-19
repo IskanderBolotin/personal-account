@@ -3,10 +3,10 @@ import s from "./advantages.module.scss";
 import { AdvantageType } from "@/src/entity/topPage/model";
 import CheckIcon from "./images/check.svg";
 import { isDefinedString } from "@/src/shared/libs";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 type Props = {
-  data: AdvantageType[];
+  data?: AdvantageType[];
   seoText?: string;
   wrapperClassName?: string;
 };
@@ -14,7 +14,7 @@ type Props = {
 const Advantages: React.FC<Props> = ({ data, seoText, wrapperClassName }) => {
   const [safeHTML, setSafeHTML] = useState("");
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (isDefinedString(seoText) && safeHTML !== seoText) {
       setSafeHTML(seoText);
     }
@@ -26,10 +26,10 @@ const Advantages: React.FC<Props> = ({ data, seoText, wrapperClassName }) => {
         <CategoryTitle title="Преимущества" titleAs="h2" titleLevel={2} />
       </div>
       <ul className={s.list}>
-        {data?.map((advItem) => {
-          const { title, _id, description } = advItem;
+        {data?.map((advItem, index) => {
+          const { title, description } = advItem;
           return (
-            <li className={s.item} key={_id}>
+            <li className={s.item} key={index}>
               {isDefinedString(title) && (
                 <div className={s.top}>
                   <span className={s.icon}>

@@ -11,7 +11,6 @@ import {
   isDefinedString,
 } from "@/src/shared/libs";
 import cn from "classnames";
-import Image from "next/image";
 
 type Props = {
   data: ProductDto;
@@ -54,7 +53,7 @@ const Product: React.FC<Props> = ({
         <div className={s.headerItem}>
           <div className={s.left}>
             <div className={s.image}>
-              <Image src={`${image}`} alt={title} width={70} height={70} quality={100} />
+              <img src={`${process.env.NEXT_PUBLIC_DOMAIN}${image}`} alt={title} />
             </div>
             <div className={s.mainInfo}>
               <div className={s.title}>

@@ -6,7 +6,7 @@ import { Title } from "../title";
 import s from "./categoryTitle.module.scss";
 
 type Props = {
-  title: string;
+  title?: string;
   titleLevel?: 1 | 2 | 3;
   tagTitle?: number | string;
   tagType?: TagType;
@@ -20,7 +20,7 @@ const CategoryTitle: React.FC<Props> = ({
   tagType = "common",
   titleAs = "h1",
 }) => {
-  const titleWords = title.split(" ");
+  const titleWords = title?.split(" ");
 
   return (
     <div className={s.title}>

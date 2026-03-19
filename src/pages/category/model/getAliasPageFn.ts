@@ -71,6 +71,13 @@ export const getStaticProps: GetStaticProps<CategoryAliasProps> = async ({
     }
 
     const { data: page } = await topPageService.getPageByAlias({ alias });
+
+    if (!isDefined(page)) {
+      return {
+        notFound: true,
+      };
+    }
+
     const { data: products } = await productService.postProduct({
       category: page.category,
       limit: 10,

@@ -1,6 +1,6 @@
 import { withMainLayout } from "@/src/widget/layouts/ui";
 import { CategoryAliasProps } from "../../model";
-import s from "./categoryAliasPage.module.scss";
+import s from "./categoryAliasPage?.module.scss";
 import { CategoryTitle } from "@/src/shared/ui";
 import { Advantages, ProductWithReview, Skills, Vacancy } from "@/src/widget/categories/ui";
 import { isDefined, isDefinedArray, isDefinedString } from "@/src/shared/libs";
@@ -13,7 +13,7 @@ import Head from "next/head";
 const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ page, products }) => {
   const [{ products: sortedProducts }, dispatch] = useReducer(sortReducer, { products });
 
-  const { metaTitle, metaDescription } = page;
+  const { metaTitle, metaDescription } = page || {};
 
   useEffect(() => {
     dispatch({ type: "RESET", payload: products });
@@ -57,9 +57,9 @@ const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ page, products }) => 
       </Head>
       <div className={s.topTitle}>
         <div className={s.topItem}>
-          <CategoryTitle title={page.title} tagTitle={products?.length} />
+          <CategoryTitle title={page?.title} tagTitle={products?.length} />
         </div>
-        <div className={s.topItem} key={`${page._id}-sort`}>
+        <div className={s.topItem} key={`${page?._id}-sort`}>
           <ProductSort
             onClickRaitingSort={onClickRaitingSort}
             onClickPriceSort={onClickPriceSort}
@@ -73,13 +73,17 @@ const CategoryAliasPage: React.FC<CategoryAliasProps> = ({ page, products }) => 
           </div>
         ))}
       </section>
-      {isDefined(page.hh) && (
-        <Vacancy title={page.category} {...page.hh} wrapperClassName="pageSection" />
+      {isDefined(page?.hh) && (
+        <Vacancy title={page?.category} {...page?.hh} wrapperClassName="pageSection" />
       )}
-      {isDefinedArray(page.advantages) && (
-        <Advantages data={page.advantages} wrapperClassName="pageSection" seoText={page.seoText} />
+      {isDefinedArray(page?.advantages) && (
+        <Advantages
+          data={page?.advantages}
+          wrapperClassName="pageSection"
+          seoText={page?.seoText}
+        />
       )}
-      {isDefinedArray(page.tags) && <Skills title={page.tagsTitle} data={page.tags} />}
+      {isDefinedArray(page?.tags) && <Skills title={page?.tagsTitle} data={page?.tags} />}
     </>
   );
 };

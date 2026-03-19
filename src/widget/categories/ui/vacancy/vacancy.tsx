@@ -6,7 +6,7 @@ import s from "./vacancy.module.scss";
 import { displayPrice, isDefinedNumber } from "@/src/shared/libs";
 
 type Props = {
-  title: string;
+  title?: string;
   wrapperClassName?: string;
 } & Partial<HHDataType>;
 

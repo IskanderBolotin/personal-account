@@ -2,7 +2,7 @@ import { CategoryTitle, Tag } from "@/src/shared/ui";
 import s from "./skills.module.scss";
 
 type Props = {
-  title: string;
+  title?: string;
   data?: string[];
   wrapperClassName?: string;
 };
